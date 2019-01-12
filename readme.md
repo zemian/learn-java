@@ -7,5 +7,7 @@ Required Software
 
 ```
 export JAVA_HOME=/path/to/jdk11
+export PATH=/path/to/maven/bin:$PATH
+
 mvn install
 ```
