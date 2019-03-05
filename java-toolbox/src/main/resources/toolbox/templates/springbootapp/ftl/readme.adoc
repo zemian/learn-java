@@ -1,0 +1,7 @@
+= Project `${projectName}`
+
+A Spring Boot web application.
+
+== Build
+
+  mvn compile spring-boot:run

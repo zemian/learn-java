@@ -1,0 +1,5 @@
+{
+  "templatePathToOutputFiles": {
+    "src/main/java/app/Hello.java" : "src/main/java/${basePackagePath}/app/Hello.java"
+  }
+}
