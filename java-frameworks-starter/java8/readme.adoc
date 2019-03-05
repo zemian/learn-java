@@ -1,0 +1,62 @@
+= Hello Java
+Zemian Deng <zemiandeng@gmail.com>
+11/15/2017
+
+== About This Project
+
+https://github.com/zemian/hello-java
+
+Hello! My name is Zemian Deng, and I am a software developer.
+
+This project is my personal playground for Java programming. I explore 
+many features of the JDK and other third party libraries. Some demos can 
+be used as reference and study, while some may be used as template to 
+jump start a new project.
+
+See different branches for more.
+
+= Default master branch: hello-java
+
+A simple java project to explore the JDK.
+
+== Hello World
+
+  mvn exec:java -Dexec.mainClass=com.zemian.hellojava.Hello
+  
+== Using Maven
+
+----
+# Compiling
+mvn compile
+
+# Packging
+mvn packing
+
+# Installing to local repo
+mvn install
+mvn install -DskipTests
+
+# Checking dependencies and copy them
+mvn dependency:tree
+mvn dependency:copy-dependencies
+
+# Check plugin version
+mvn help:describe -Dplugin=exec
+
+# See effective (aggregated final) pom
+mvn help:effective-pom
+----  
+
+== Java .class Versions
+
+* Java 1.2 uses major version 46
+* Java 1.3 uses major version 47
+* Java 1.4 uses major version 48
+* Java 5 uses major version 49
+* Java 6 uses major version 50
+* Java 7 uses major version 51
+* Java 8 uses major version 52
+
+How to check version
+
+  javap -verbose -cp target/classes com.zemian.hellojava.Hello | grep 'major version'

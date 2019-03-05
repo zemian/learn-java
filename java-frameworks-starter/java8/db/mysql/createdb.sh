@@ -1,0 +1,3 @@
+NAME=$1
+echo "CREATE DATABASE $NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+GRANT ALL ON $NAME.* TO 'dev'@'localhost'";
