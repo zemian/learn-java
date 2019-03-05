@@ -1,0 +1,14 @@
+= Hello Spring
+Zemian Deng <zemiandeng@gmail.com>
+11/19/2017
+
+This git repository contains many Spring related demo projects.
+
+Contents:
+
+* `hello-spring-common` Contains reusable common code used in all demos.
+* `hello-spring-*` A case study and demo to explore a major area of spring related module.
+* `template-*` A template project to kickstart a new project.
+
+Some demos require database setup, so you may find `db` that contains schema. I 
+triedfolderto use PostgreSQL database for most of the demo.

@@ -1,0 +1,4 @@
+= myjava
+
+A simple Java app to explore built-in JDK libraries
+

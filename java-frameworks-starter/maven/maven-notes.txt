@@ -1,0 +1,15 @@
+= Notes for Maven 3.5.3 (2018-03-25)
+
+== Effective pom
+
+  mvn help;effective-pom
+
+== Maven Archetype
+
+Use archetype to generate new project. There is a `create-project.sh` script
+to help pre-type the long command line options!
+
+Note unfortunately the default `maven-archetype-plugin` generates very
+basic and outdated default project settings. Example default compile
+to Java 1.5 and using JUnit3! User need to manaully update these after
+the project is generated to something more modern.

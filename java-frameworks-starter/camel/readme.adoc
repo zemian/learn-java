@@ -1,0 +1,9 @@
+= Hello Java
+
+A Spring based app to explore Apache Camel.
+
+== Hello World
+
+Run file poller
+
+  mvn compile exec:java -Dexec.args="com.zemian.hellojava.camel.FilePoller filePoller"

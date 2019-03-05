@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm} %p %c{0}:%L %t %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+    <logger name="jspwebapp" level="INFO"/>
+    <!--<logger name="jspwebapp.common.JdbcUtils" level="DEBUG"/>-->
+    <!--<logger name="jspwebapp.common.tomcatpool.DbConnLogger" level="DEBUG"/>-->
+    <!--<logger name="jspwebapp.common.tomcatpool.DbSqlLogger" level="DEBUG"/>-->
+    <!--<logger name="jspwebapp.common.tomcatpool.DbSqlLoggerExt" level="DEBUG"/>-->
+</configuration>

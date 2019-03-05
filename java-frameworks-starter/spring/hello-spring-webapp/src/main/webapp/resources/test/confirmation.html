@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap-theme.min.css">
+    <script src="/resources/js/jquery-3.2.1.min.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
+    <script src="/resources/js/bootstrap-confirmation.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=confirmation]').confirmation();
+        });
+    </script>
+
+</head>
+<body>
+
+<h1>Bootstrap Confirmation Test Page</h1>
+<p><a href="hello.html">Hello</a></p>
+<p><a href="hello.html" data-toggle="confirmation" data-title="Open Hello?">Hello2</a></p>
+<p><a href="hello.html" data-toggle="confirmation" data-title="Open Hello?">Hello3</a></p>
+
+<a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Open Google?"
+   href="https://google.com" target="_blank">Confirmation</a>
+
+</body>
+</html>
+

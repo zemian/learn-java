@@ -1,0 +1,9 @@
+# Maven and test related noise
+target/
+
+# IntelliJ IDEA noise
+.idea/
+*.iml
+
+# MacOSX noise
+.DS_Store

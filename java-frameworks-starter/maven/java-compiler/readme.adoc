@@ -1,0 +1,51 @@
+= java-compiler
+
+A project to explore different options using Maven compiler plugin.
+
+== Maven Compiler Plugin
+
+Default maven 3.5.3 is using
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+
+And this compiler version will default compiling Java in 1.5 format!
+
+Default Java9 requires minimal of Java 1.6 format! So you must
+manually change the source and target value using Java9.
+
+Ref: https://maven.apache.org/plugins/maven-compiler-plugin
+
+NOTE: Maven properties value for Java 9 has changed from decimal
+to whole number format!
+
+Java 8
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+Java 9
+    <maven.compiler.source>9</maven.compiler.source>
+    <maven.compiler.target>9</maven.compiler.target>
+
+
+== Testing different java compiler target values
+
+  mvn -f pom-java9.xml
+
+== Java versions
+
+How to check version
+
+  javap -cp target/classes -verbose com.zemian.javacompiler.App | grep 'major version'
+
+Examples of output:
+
+	major version: 45.3 = Java 1.1
+	major version: 46 = Java 1.2
+	major version: 47 = Java 1.3
+	major version: 48 = Java 1.4
+	major version: 49 = Java 1.5
+	major version: 50 = Java 1.6
+	major version: 51 = Java 1.7
+	major version: 52 = Java 1.8
+	major version: 53 = Java 9
+	major version: 54 = Java 10

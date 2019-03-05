@@ -1,0 +1,42 @@
+= Hello Java
+
+A simple Spring Boot based web application + JSP/JSTL that runs on external Tomcat server.
+
+This project is based on "spring-boot-web-login-file" branch.
+
+This project explores database access with PostgreSQL.
+
+This project explores database login security.
+
+This project is based on "spring-boot-web" branch.
+
+== How to run
+
+1. Package the application with `mvn package`
+2. Copy the `target/hello-java-<version>.war` into `$CATALINA_BASE/webapps` directory
+3. Start Tomcat server
+
+Or you may also configure your IDE to run this project inside the app server.
+
+
+== Setup Database
+
+First database setup
+
+----
+# Create a user that can create db
+createuser -d test
+
+# Create the database
+createdb -U test test
+
+# Grant user with database
+psql -c 'grant all privileges on database test to test'
+
+# Create database schema
+psql -U test -d test -f db/01_create.sql
+----
+
+If you need to drop db:
+
+  dropdb -U test test

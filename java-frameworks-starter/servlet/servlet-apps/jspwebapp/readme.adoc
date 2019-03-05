@@ -1,0 +1,10 @@
+= Project `servletwebapp`
+
+A simple Servlet/JSP web application.
+
+== Build
+
+    mvn package
+    java -jar target/dependency/webapp-runner.jar target/servletwebapp.war
+    open http://localhost:8080
+
