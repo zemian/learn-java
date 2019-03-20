@@ -1,9 +1,0 @@
-= Project `${projectName}`
-
-A multi modules application.
-
-== Build
-
-    mvn package
-    java -jar webapp/target/dependency/webapp-runner.jar webapp/target/webapp.war
-    open http://localhost:8080

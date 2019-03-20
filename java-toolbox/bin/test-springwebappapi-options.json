@@ -1,8 +1,0 @@
-{
-  "templateSetName": "springwebappapi",
-  "overrideFiles" : "true",
-  "dbTables": "contacts",
-  "dbUrl": "jdbc:postgresql://localhost/test",
-  "dbUser": "postgres",
-  "dbPass": ""
-}

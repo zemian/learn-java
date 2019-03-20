@@ -1,8 +1,0 @@
-= Project `${projectName}`
-
-A Java application.
-
-== Build
-
-    mvn package
-    mvn exec:java -Dexec.mainClass=${basePackage}.app.Hello
