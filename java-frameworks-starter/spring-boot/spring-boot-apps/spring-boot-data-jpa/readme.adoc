@@ -1,5 +1,0 @@
-= spring-boot-data-jpa
-
-A Spring Boot example app for data-jpa service.
-
-We will use PostgreSQL DB for storage. You need to setup your DB with db/postgres/*.sql first.

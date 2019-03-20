@@ -1,3 +1,0 @@
-= hello-spring-common
-
-Common code for all the demos in this project.

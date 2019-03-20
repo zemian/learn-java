@@ -1,3 +1,0 @@
-= java-demos
-
-Demos of various open source projects

@@ -1,2 +1,0 @@
-CREATE USER test;
-CREATE DATABASE test OWNER = test;

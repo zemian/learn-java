@@ -1,5 +1,0 @@
-= Hello Java
-
-A simple SpringMVC based web application + JSP/JSTL.
-
-This project contains bare minimal web layout and UI setup.

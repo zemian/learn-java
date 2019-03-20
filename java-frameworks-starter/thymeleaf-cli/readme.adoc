@@ -1,4 +1,0 @@
-= hello
-
-A simple Java app to explore Thymeleaf library.
-

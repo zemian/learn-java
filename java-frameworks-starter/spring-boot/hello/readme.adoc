@@ -1,3 +1,0 @@
-= Project `hello`
-
-A simple Spring Boot Hello app.
