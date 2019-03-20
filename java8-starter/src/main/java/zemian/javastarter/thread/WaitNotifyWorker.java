@@ -1,12 +1,11 @@
 package zemian.javastarter.thread;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public abstract class WaitNotifyWorker implements Runnable {
-    private static final Logger LOG = LoggerFactory.getLogger(WaitNotifyWorker.class);
+    private static final Logger LOG = Logger.getLogger(WaitNotifyWorker.class.getName());
     private AtomicBoolean running = new AtomicBoolean(false);
     private Object waitLock = new Object();
 
@@ -31,7 +30,7 @@ public abstract class WaitNotifyWorker implements Runnable {
             try {
                 waitLock.wait();
             } catch (InterruptedException e) {
-                LOG.error("Failed in wait mode.", e);
+                LOG.log(Level.SEVERE, "Failed in wait mode.", e);
             }
         }
     }

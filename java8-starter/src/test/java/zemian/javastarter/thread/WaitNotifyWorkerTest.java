@@ -2,15 +2,15 @@ package zemian.javastarter.thread;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import java.util.logging.Logger;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class WaitNotifyWorkerTest {
     public static class MyTinyServer extends WaitNotifyWorker {
-        private static final Logger LOG = LoggerFactory.getLogger(MyTinyServer.class);
+        private static final Logger LOG = Logger.getLogger(WaitNotifyWorker.class.getName());
         private String status = "NEW";
 
         public String getStatus() {

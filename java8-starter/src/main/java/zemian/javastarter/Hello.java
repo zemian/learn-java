@@ -1,16 +1,17 @@
 package zemian.javastarter;
 
-import org.slf4j.*;
-
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Hello {
-    public static final Logger LOG = LoggerFactory.getLogger(Hello.class);
+    private static final Logger LOG = Logger.getLogger(Hello.class.getName());
     
     public static void main(String ... args) throws Exception {
-        LOG.trace("Program started {}", new Date());
-        LOG.debug("Arguments: {}", Arrays.asList(args));
-        LOG.info("Hello!");
-        LOG.trace("Program exiting now.");
+        LOG.log(Level.INFO, "Program started {}", new Date());
+        LOG.log(Level.FINE, "Arguments: {}", Arrays.asList(args));
+        LOG.log(Level.INFO, "Hello!");
+        LOG.log(Level.FINER, "Program exiting now.");
+        System.out.println("Say Hello to Java!");
     }
 }
