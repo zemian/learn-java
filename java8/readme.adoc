@@ -2,10 +2,10 @@
 
 Required Software
 
-* JDK 11
+* JDK 8
 * Maven 3.6.0
 
 ----
-export JAVA_HOME=/path/to/jdk11
+export JAVA_HOME=/path/to/jdk8
 mvn install
 ----
