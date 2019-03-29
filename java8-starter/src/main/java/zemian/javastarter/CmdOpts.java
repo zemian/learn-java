@@ -152,6 +152,7 @@ public class CmdOpts {
         return Long.parseLong(result);
     }
 
+    @SuppressWarnings("unchecked")
     public List<String> getMultiOpts(String name) {
         List<String> list = new ArrayList<>();
         Object optVal = opts.get(name);
