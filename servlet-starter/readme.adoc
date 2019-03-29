@@ -1,9 +1,3 @@
-== Build and Run
-
-  mvn jetty:run
-  Open http://localhost:8080/
-
-
 = Web Design Tools and Resources
 
 - https://getbootstrap.com/[HTML & Web Design]

@@ -1,3 +1,4 @@
-= Hello Java
+== Build and Run
 
-A simple Servlet based application.
+  mvn jetty:run
+  Open http://localhost:8080/
