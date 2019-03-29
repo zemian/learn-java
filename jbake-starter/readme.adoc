@@ -1,0 +1,16 @@
+JBake is a Java based, open source, static site/blog generator for developers & designers
+
+https://jbake.org/
+
+== Getting started
+
+  mkdir hello-site
+  ../jbake-2.6.4-bin/bin/jbake -i
+  ../jbake-2.6.4-bin/bin/jbake -s
+  open http://localhost:8820
+  
+== Other alternative static generator
+
+* https://jekyllrb.com/
+* https://pmarsceill.github.io/just-the-docs/
+* https://blog.getpelican.com/
