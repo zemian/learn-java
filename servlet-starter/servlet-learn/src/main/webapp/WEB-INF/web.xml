@@ -4,12 +4,35 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    
+    <!-- Hello Servlet with Filter Test -->
+    <servlet>
+        <servlet-name>zemian.servletstarter.HelloServlet</servlet-name>
+        <servlet-class>zemian.servletstarter.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>zemian.servletstarter.HelloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>zemian.servletstarter.HelloFilter</filter-name>
+        <filter-class>zemian.servletstarter.HelloFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>zemian.servletstarter.HelloFilter</filter-name>
+        <url-pattern>/hello</url-pattern>
+    </filter-mapping>
 
     <!--
     Error Handling
     -->
     <error-page>
-        <location>/error</location>
+        <location>/error.jsp</location>
     </error-page>
+
+    <!-- Session timeout in minutes
+    <session-config>
+        <session-timeout>20</session-timeout>
+    </session-config> -->
 
 </web-app>

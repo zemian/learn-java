@@ -9,5 +9,5 @@
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
-    <logger name="com.zemian.hellojava" level="DEBUG"/>
+    <logger name="zemian.servletstarter" level="INFO"/>
 </configuration>
