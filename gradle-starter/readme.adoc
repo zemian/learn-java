@@ -45,5 +45,5 @@ https://docs.gradle.org/current/userguide/build_init_plugin.html
 
     testImplementation 'junit:junit:4.12'
 	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.4.1'
-	testImplementation 'org.hamcrest:hamcrest-library:2.1'
+	testImplementation 'org.hamcrest:hamcrest:2.1'
 
