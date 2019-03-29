@@ -1,0 +1,16 @@
+= Asciidoc Attributes
+:toc:
+:foo-var: hello
+:bar-var: bar
+:hello-bar-var: {foo-var} bar
+:hello-bar-var2: pass:[{foo-var} bar]
+
+This doc contains attributes such as {foo-var} and {hello-bar-var}.
+
+This doc contains attributes such as `{foo-var}` and `{hello-bar-var}`.
+
+This doc contains attributes such as `{foo-var}` and `{hello-bar-var2}`.
+
+My link:foo/{bar-var}.adoc[Test Bar Link]
+
+My <<foo/{bar-var}.adoc#,Test Bar CrossRef Link>>

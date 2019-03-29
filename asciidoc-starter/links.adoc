@@ -1,0 +1,10 @@
+Links Testing
+
+1. link:hello.adoc[hello.adoc]
+2. link:hello.html[hello.html]
+3. link:foo/bar.adoc[foo/bar.adoc]
+4. link:foo/bar.html[foo/bar.html]
+5. <<hello.adoc#, hello.adoc doc>>
+6. <<hello.html, hello.html doc>>
+7. <<foo/bar.adoc#, foo/bar.adoc doc>>
+8. <<foo/bar.html, foo/bar.html doc>>

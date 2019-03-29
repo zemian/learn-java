@@ -1,0 +1,13 @@
+I shall include bar.adoc output here:
+
+== Normal include
+
+include::foo/bar.adoc[]
+
+== Formated include
+
+----
+include::foo/bar.adoc[]
+----
+
+== The End
