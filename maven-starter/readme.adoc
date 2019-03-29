@@ -1,0 +1,25 @@
+Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information. 
+
+http://maven.apache.org/
+
+https://search.maven.org/
+
+== Add Maven wrapper To Existing Project
+
+	mvn -N io.takari:maven:wrapper
+	
+https://github.com/takari/maven-wrapper
+
+== Effective pom
+
+  mvn help:effective-pom
+
+== Maven Archetype
+
+Use archetype to generate new project. There is a `create-project.sh` script
+to help pre-type the long command line options!
+
+Note unfortunately the default `maven-archetype-plugin` generates very
+basic and outdated default project settings. Example default compile
+to Java 1.5 and using JUnit3! User need to manaully update these after
+the project is generated to something more modern.

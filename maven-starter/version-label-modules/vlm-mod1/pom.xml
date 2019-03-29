@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>zemian.maven</groupId>
+    <artifactId>version-label-modules</artifactId>
+
+    <!--
+      NOTE: You can't use ${revision} as parent version here but must be 
+      explicit constant string! In fact, none of these will work.
+    -->
+    <!-- <version>${revision}</version> -->
+    <!-- <version>${myParentVersion}</version> -->
+    <!-- <version>${myParentVersion2}</version> -->
+    <version>20181213</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <groupId>zemian.maven</groupId>
+  <artifactId>vlm-mod1</artifactId>
+  <!--
+    NOTE: You can't use any custom props string such as ${vlm.version}. You will
+    get a WARNING from mvn.
+
+    But ${revision} property is okay because it's built-in. 
+    See https://maven.apache.org/maven-ci-friendly.html
+    However ${revision} would still needs to be defined in parent pom!
+  -->
+  <!-- <version>${myappVersion}</version> -->
+  <version>${revision}</version>
+  <packaging>jar</packaging>
+  
+  <properties>
+    <myParentVersion2>20181213</myParentVersion2>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,12 @@
+== Build and Run
+
+  mvn jetty:run
+  Open http://localhost:8080/
+
+
+= Web Design Tools and Resources
+
+- https://getbootstrap.com/[HTML & Web Design]
+- https://html5up.net/[HTML Design Templates]
+- https://unsplash.com/[Photos and Art Collections]
+- https://vuejs.org/[JavaScript Framework for UI]

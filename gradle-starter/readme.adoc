@@ -1,0 +1,49 @@
+Gradle is an open-source build automation tool focused on flexibility and performance. Gradle build scripts are written using a Groovy or Kotlin DSL. Read about Gradle features to learn what is possible with Gradle.
+
+https://docs.gradle.org/current/userguide/userguide.html
+
+== Installation
+
+Option 1. Use one packaged in this repo "gradle-5.2.1"
+
+Option 2. Downloads from official site
+
+Option 3. Use SDKMAN `sdk install gradle`
+
+
+== First Project: basic-demo
+
+----
+mkdir basic-demo
+cd basic-demo
+
+# Init the project
+# NOTE: The above command is interactive and it will 
+# propmt you for answer. You may use enter key to accept all defaults.
+../gradle-5.2.1/bin/gradle init
+
+# Now you can build it.
+../gradle-5.2.1/bin/gradle tasks
+----
+
+To see what other types of project you can initialize, visit 
+https://docs.gradle.org/current/userguide/build_init_plugin.html
+
+== View Dependencies
+
+  gradle -q dependencies --configuration default
+
+
+== Some popular dependencies
+	
+	implementation 'org.slf4j:slf4j-api:1.7.26'
+	implementation 'org.slf4j:slf4j-simple:1.7.26'
+	implementation 'ch.qos.logback:logback-classic:1.2.3'
+	implementation 'commons-lang:commons-lang:2.6'
+	implementation 'mysql:mysql-connector-java:8.0.15'
+	implementation 'org.hibernate:hibernate-core:5.4.1.Final'
+
+    testImplementation 'junit:junit:4.12'
+	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.4.1'
+	testImplementation 'org.hamcrest:hamcrest-library:2.1'
+

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>zemian.maven</groupId>
+    <artifactId>version-label-modules</artifactId>
+    <version>20181213</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <groupId>zemian.maven</groupId>
+  <artifactId>vlm-mod2</artifactId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
+
+  <dependencies>
+  </dependencies>
+  
+  <modules>
+    <module>vlm-mod3</module>
+  </modules>
+</project>

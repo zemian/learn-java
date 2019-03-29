@@ -1,0 +1,15 @@
+What is JUnit?
+
+JUnit is a simple, open source framework to write and run repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks. JUnit features include: Assertions for testing expected results Test fixtures for sharing common test data Test runners for running tests
+
+JUnit was originally written by Erich Gamma and Kent Beck.
+
+https://github.com/junit-team/junit4/wiki/Getting-started
+
+
+== Hamcrest Library
+
+Hamcrest is a very nice assertion helper that works really well with JUnit. It
+helps all assertion easy to write and consistently with `assertThat`.
+
+http://hamcrest.org/JavaHamcrest/

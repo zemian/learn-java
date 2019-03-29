@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+This is a custom Tomcat server configuration specific for common env.
+-->
+
+<Server port="8005" shutdown="SHUTDOWN">
+    <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
+    <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+
+    <GlobalNamingResources>
+		
+		<!-- Editable user database that can also be used by
+			 UserDatabaseRealm to authenticate users
+		-->
+		<Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+              description="User database that can be updated and saved"
+              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+              pathname="conf/tomcat-users.xml" />
+
+        <!-- PostgreSQL DB: Connection Pool with Apache Commons DBCP
+        Doc: http://tomcat.apache.org/tomcat-8.5-doc/jndi-datasource-examples-howto.html#Database_Connection_Pool_(DBCP_2)_Configurations
+        <Resource name="postgres_testDB"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  driverClassName="org.postgresql.Driver"
+                  url="jdbc:postgresql://localhost/test"
+                  username="postgres"
+                  password=""
+                  maxTotal="4"
+                  maxIdle="2"/>
+        -->
+
+        <!-- PostgreSQL DB: Connection Pool with Tomcat JDBC
+        Doc: http://tomcat.apache.org/tomcat-8.5-doc/jdbc-pool.html
+        <Resource name="postgres_testDB"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+                  driverClassName="org.postgresql.Driver"
+                  url="jdbc:postgresql://localhost/test"
+                  username="postgres"
+                  password=""
+                  jmxEnabled="false"
+                  maxActive="4"
+                  maxIdle="4"
+                  minIdle="0"
+                  initialSize="0"
+        />
+        -->
+
+        <!-- PostgreSQL DB: Connection Pool with Tomcat JDBC
+        NOTE: A setup of db pool to explore interceptor
+        <Resource name="postgres_testDB"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+                  driverClassName="org.postgresql.Driver"
+                  url="jdbc:postgresql://localhost/test"
+                  username="postgres"
+                  password=""
+                  jmxEnabled="false"
+                  maxActive="4"
+                  maxIdle="4"
+                  minIdle="0"
+                  initialSize="0"
+                  jdbcInterceptors="jspwebapp.common.tomcatpool.DbSqlLoggerExt"
+        />
+        -->
+
+        <!-- PostgreSQL DB: Connection Pool with Tomcat JDBC
+        NOTE: A setup of db pool to explore abandon conn.
+
+        removeAbandonedTimeout is in seconds!
+
+        The borrowedCount and returnedCount from the pool is not accurate and we
+        need to use our own DbConnLogger.
+
+        jdbcInterceptors="ResetAbandonedTimer;jspwebapp.common.tomcatpool.DbConnLogger;jspwebapp.common.tomcatpool.DbSlowQuerySimulator(delayTimeInMillis=30000)"
+
+        <Resource name="postgres_testDB"
+                  object_name="postgres_testDB"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+                  driverClassName="org.postgresql.Driver"
+                  url="jdbc:postgresql://localhost/test"
+                  username="postgres"
+                  password=""
+                  jmxEnabled="false"
+                  maxActive="4"
+                  maxIdle="4"
+                  minIdle="0"
+                  initialSize="0"
+                  logAbandoned="true"
+                  removeAbandoned="true"
+                  removeAbandonedTimeout="20"
+                  jdbcInterceptors="ResetAbandonedTimer;jspwebapp.common.tomcatpool.DbConnLogger"
+        />
+        -->
+
+        <!-- PostgreSQL DB: Connection Pool with Tomcat JDBC
+        NOTE: A setup of db pool to explore idle conn eviction.
+        <Resource name="postgres_testDB"
+                  object_name="postgres_testDB"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+                  driverClassName="org.postgresql.Driver"
+                  url="jdbc:postgresql://localhost/test"
+                  username="postgres"
+                  password=""
+                  jmxEnabled="false"
+                  maxActive="4"
+                  maxIdle="4"
+                  minIdle="0"
+                  initialSize="4"
+                  minEvictableIdleTimeMillis = "20000"
+                  timeBetweenEvictionRunsMillis="5000"
+                  testWhileIdle="true"
+                  testOnBorrow="true"
+                  validationQuery="SELECT 1 + 1"
+        />
+        -->
+
+    </GlobalNamingResources>
+
+    <!-- A "Service" is a collection of one or more "Connectors" that share
+         a single "Container" Note:  A "Service" is not itself a "Container",
+         so you may not define subcomponents such as "Valves" at this level.
+         Documentation at /docs/config/service.html
+     -->
+    <Service name="Catalina">
+
+        <!-- A "Connector" represents an endpoint by which requests are received
+             and responses are returned. Documentation at :
+             Java HTTP Connector: /docs/config/http.html
+             Java AJP  Connector: /docs/config/ajp.html
+             APR (HTTP/AJP) Connector: /docs/apr.html
+             Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
+			 
+			 Tomcat versions 8.5 and above uses ISO-8859-1 encoding. 
+			 Explicitly set encoding to UTF-8 otherwise it shall fail for URLs 
+			 containing Special characters.
+        -->
+        <Connector port="8080" protocol="HTTP/1.1"
+                   connectionTimeout="20000" URIEncoding="UTF-8"/>
+
+
+        <!-- An Engine represents the entry point (within Catalina) that processes
+             every request.  The Engine implementation for Tomcat stand alone
+             analyzes the HTTP headers included with the request, and passes them
+             on to the appropriate Host (virtual host).
+             Documentation at /docs/config/engine.html -->
+
+        <Engine name="Catalina" defaultHost="localhost">
+
+			<!-- XML DB User Realm -->
+			<Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+               resourceName="UserDatabase"/>
+
+            <Host name="localhost" appBase="webapps"
+                  unpackWARs="true" autoDeploy="true">
+				  
+				  
+                <!-- Direct application deploy context webapp -->
+                <Context docBase="${catalina.base}/../jspwebapp/src/main/webapp" path="/jspwebapp"/>
+                <Context docBase="${catalina.base}/../jspwebapp2/src/main/webapp" path="/jspwebapp2"/>
+				
+                <!-- SingleSignOn valve, share authentication between web applications
+                     Documentation at: /docs/config/valve.html
+                <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
+                -->
+                <Valve className="jspwebapp.common.listener.SingleSignOnCallback"/>
+
+                <!-- Access log processes all example.
+                     Documentation at: /docs/config/valve.html
+                     Note: The pattern used is equivalent to using pattern="common" -->
+                <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+                       prefix="localhost_access_log" suffix=".txt"
+                       pattern="%h %l %u %t &quot;%r&quot; %s %b %D"/>
+
+            </Host>
+        </Engine>
+    </Service>
+</Server>

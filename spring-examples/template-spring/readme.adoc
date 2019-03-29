@@ -1,0 +1,14 @@
+= Hello Java
+
+A Spring App.
+
+== Hello World
+
+  mvn compile exec:java -Dexec.mainClass=com.zemian.hellojava.app.Hello
+
+== Deployment
+
+Build a single executable app jar
+
+  mvn package
+  java -jar target/hello-java-1.0-SNAPSHOT-app.jar

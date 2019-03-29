@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>zemian.maven</groupId>
+  <artifactId>version-label-modules</artifactId>
+  <!-- 
+  NOTE: As parent pom, you cannot use non-constant, ${myapp.version}, value for 
+  version tag!
+
+  You can't use a released version tag value if you do not have it installed
+  either!
+
+  Sulution:
+  1) Use a SNAPSHOT suffix, then it will not look in the repository.
+  2) Use relased tag value, but child pom MUST use <relativePath> tag!
+  -->
+  <version>20181213</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <!-- NOTE: The project revision can be different than the parent pom! -->
+    <revision>2.0-SNAPSHOT</revision>
+    <myParentVersion>20181213</myParentVersion>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.gmaven</groupId>
+        <artifactId>groovy-maven-plugin</artifactId>
+        <version>2.1</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <configuration>
+              <source>
+                // NOTE Maven properties are replaced before passing to Groovy
+                // engine evaluation! Because of this, some variables can not
+                // be used in as ${var} format, but to access as object instead.
+                println("=" * 50)
+                println("Property project=" + project)
+                println("Property project.groupId=${project.groupId}")
+                println("Property project.artifactId=${project.artifactId}")
+                println("Property project.version=${project.version}")
+                //println("Property project.basedir='''${project.basedir}''''")
+                println("Property project.basedir=" + project.basedir)
+                println("Property revision=${revision}")
+                println("Property myParentVersion=${myParentVersion}")
+                println("=" * 50)
+              </source>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+      </dependency>
+      <dependency>
+        <groupId>zemian.maven</groupId>
+        <artifactId>vlm-mod1</artifactId>
+        <version>${revision}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
+  <modules>
+    <module>vlm-mod1</module>
+    <module>vlm-mod2</module>
+  </modules>
+  
+</project>

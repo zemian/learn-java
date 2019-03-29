@@ -1,0 +1,5 @@
+This project is created by this guide:
+
+https://guides.gradle.org/creating-new-gradle-builds/
+
+Run `./gradlew tasks` to see list of tasks to run

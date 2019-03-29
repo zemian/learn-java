@@ -1,0 +1,10 @@
+= Project `jspwebapp`
+
+A simple JSP web application.
+
+== Build
+
+    mvn package
+    java -jar target/dependency/webapp-runner.jar target/jspwebapp.war
+    open http://localhost:8080
+

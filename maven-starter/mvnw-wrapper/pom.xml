@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!--
+    Build application using a maven wrapper.
+    See https://github.com/takari/maven-wrapper
+
+    For first time, you may setup wrapper with the following:
+      1) Install a maven first.
+
+      2) Setup wrapper on an existing project:
+          mvn -N io.takari:maven:wrapper
+
+      3) Then from this point on, you no londer need manual
+         download maven. All commands can be invoke as follow:
+          ./mvnw install
+  -->
+  <groupId>zemian</groupId>
+  <artifactId>mvnw-wrapper</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.3.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

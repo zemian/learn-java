@@ -1,0 +1,8 @@
+= Hello Java
+
+A simple java 8 project to explore Maven Multi Modules.
+
+== Hello World
+
+  mvn install
+  mvn -pl hello-java-client exec:java -Dexec.mainClass='com.zemian.hellojava.client.Hello'

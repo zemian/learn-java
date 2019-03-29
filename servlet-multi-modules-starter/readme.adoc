@@ -1,0 +1,20 @@
+= jspwebapp
+
+A simple JSP web application to explore multi-wars deployment with Tomcat.
+See `tomcat-hello-base` for tomcat deployment setup.
+
+== Build and Run
+
+  cd jspwebapp-parent
+  mvn package dependency:copy-dependencies
+  tomcat-base/bin/run.sh
+  open http://localhost:8080
+
+== Tomcat Session Notes
+
+We can make multi wars shared the same session ID, but the content stored attributes are not shared!
+To be able to share same session ID accross multiple wars in Tomcat, you need to add the following
+to the `conf/context.xml` file:
+
+    <Context sessionCookiePath="/">
+    </Context>

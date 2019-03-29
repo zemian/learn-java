@@ -1,0 +1,4 @@
+== Mininum Setup For a Basic Build
+
+A gradle project can have just an empty file `build.gradle` file!
+

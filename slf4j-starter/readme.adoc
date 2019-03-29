@@ -1,0 +1,34 @@
+The Simple Logging Facade for Java (SLF4J) serves as a simple facade or abstraction for various logging frameworks (e.g. java.util.logging, logback, log4j) allowing the end user to plug in the desired logging framework at deployment time. 
+
+https://www.slf4j.org/
+
+== Build and Tests
+
+  mvn compile
+
+  # To test slf4j-simple
+  mvn exec:java -Dexec.mainClass=zemian.slf4jstater.Hello
+
+  # To test logback
+  mvn exec:java -Dexec.mainClass=zemian.slf4jstater.Hello -P logback
+
+== Simple Implementation
+
+`slf4j-simple`
+
+See https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html
+
+To enable DEBUG:
+
+  -Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG
+
+== Logback Implementation
+
+Logback is intended as a successor to the popular log4j project, https://logback.qos.ch/reasonsToSwitch.html[picking up where log4j leaves off]. 
+
+https://logback.qos.ch/
+
+
+== References
+
+- https://github.com/quartz-scheduler/quartz/wiki/How-to-Setup-Logging

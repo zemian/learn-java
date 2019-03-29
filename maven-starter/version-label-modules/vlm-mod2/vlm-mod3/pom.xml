@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>zemian.maven</groupId>
+    <artifactId>vlm-mod2</artifactId>
+    <!-- 
+    Only at 2nd level of module hierachy, we can use non-constant version
+    label here!
+    -->
+    <version>${revision}</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <groupId>zemian.maven</groupId>
+  <artifactId>vlm-mod3</artifactId>
+  <version>${revision}</version>
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <!-- This dependency will cause some goal to require
+    "mvn install" to be run first. For example "dependency:tree"
+    would requires vlm-mod1 to be installed first.
+
+    Besides "mvn install", we can have to run at root dir:
+
+    mvn dependency:tree -pl vlm-mod1
+    -->
+    <dependency>
+      <groupId>zemian.maven</groupId>
+      <artifactId>vlm-mod1</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

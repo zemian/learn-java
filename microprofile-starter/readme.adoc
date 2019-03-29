@@ -1,0 +1,11 @@
+What is the MicroProfile?
+
+Developers have a tremendous amount of Java EE and general Enterprise Java knowledge and skill that they want to leverage as they evaluate the adoption of a cloud-native architecture. The MicroProfile is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. The initially planned baseline is JAX-RS + CDI + JSON-P, with the intent of community having an active role in the MicroProfile definition and roadmap.
+
+https://microprofile.io/resources/
+
+== Project Starter Generator
+
+https://start.microprofile.io
+
+See `helidonstarter` and `thrntailstarter`

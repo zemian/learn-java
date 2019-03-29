@@ -1,0 +1,19 @@
+plugins { 
+	id 'java'
+	id 'application'
+}
+
+// Required "application" plugin props
+application {
+    mainClassName = 'zemian.gradlestarter.javaapp.App'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.quartz-scheduler:quartz:2.3.0'
+
+    testImplementation 'junit:junit:4.12'
+}

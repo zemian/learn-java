@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+    <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
+    <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+
+    <GlobalNamingResources>
+        <Resource name="jdbc/appDataSource"
+                  factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  driverClassName="org.postgresql.Driver"
+                  url="jdbc:postgresql://localhost:5432/test"
+                  username="test"
+                  password=""
+                  testWhileIdle="true"
+                  testOnBorrow="true"
+                  testOnReturn="false"
+                  validationQuery="SELECT 1 + 1"
+                  validationInterval="30000"
+                  timeBetweenEvictionRunsMillis="30000"
+                  maxActive="8"
+                  minIdle="4"
+                  maxIdle="8"
+                  maxWait="10000"
+                  initialSize="4"
+                  removeAbandonedTimeout="60"
+                  removeAbandoned="true"
+                  logAbandoned="true"
+                  minEvictableIdleTimeMillis="30000"
+                  jmxEnabled="false"
+                  jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+        />
+    </GlobalNamingResources>
+
+    <Service name="Catalina">
+        <Connector port="8080" protocol="HTTP/1.1"
+                   connectionTimeout="20000"
+                   redirectPort="8443"/>
+
+        <Engine name="Catalina" defaultHost="localhost">
+
+            <!-- Standalone DB Realm for users
+            <Realm className="org.apache.catalina.realm.JDBCRealm"
+                   driverName="org.postgresql.Driver"
+                   connectionURL="jdbc:postgresql://localhost:5432/test?user=test&amp;password="
+                   userTable="users" userNameCol="user_name" userCredCol="user_pass"
+                   userRoleTable="user_roles" roleNameCol="role_name"/>
+            -->
+
+            <!-- JNDI Realm -->
+            <Realm className="org.apache.catalina.realm.DataSourceRealm"
+                   dataSourceName="jdbc/appDataSource"
+                   userTable="users" userNameCol="user_name" userCredCol="user_pass"
+                   userRoleTable="user_roles" roleNameCol="role_name"/>
+
+            <Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="true">
+
+                <Context docBase="${catalina.base}/../target/hello-java-0.0.1-SNAPSHOT" path="/">
+                    <!-- Wihtout this link, you will able to login to app, but the app access to JNDI DataSource
+                    will fail only at runtime with url=null!!! -->
+                    <ResourceLink name="jdbc/appDataSource" global="jdbc/appDataSource" type="javax.sql.DataSource" />
+                </Context>
+
+                <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+                       prefix="localhost_access_log" suffix=".txt"
+                       pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
+
+            </Host>
+        </Engine>
+    </Service>
+</Server>

@@ -1,0 +1,14 @@
+= hello
+
+A simple Java app to explore Thymeleaf library.
+
+Thymeleaf is a modern server-side Java template engine for both web and standalone environments.
+
+Thymeleaf's main goal is to bring elegant natural templates to your development workflow — HTML that can be correctly displayed in browsers and also work as static prototypes, allowing for stronger collaboration in development teams.
+
+https://www.thymeleaf.org/
+
+== Getting Started
+
+https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html
+

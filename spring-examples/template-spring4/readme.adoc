@@ -1,0 +1,3 @@
+= Hello Java
+
+A template project to get started with Spring4

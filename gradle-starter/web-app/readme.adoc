@@ -1,0 +1,9 @@
+== Setup
+
+https://guides.gradle.org/building-java-web-applications/
+
+== Build and Run
+
+  ./gradlew appRun
+  open http://localhost:8080/web-app
+  

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!--
+  This example show how to use Maven assembly to package up basic
+  distribution zip file. Note that all depedencies are repackage
+  alone with application code into a single jar! This is same as shade jar
+  into one big jar deployment.
+
+  If you want actual zip file distribution packaging, see single-app-example2.
+  -->
+  <groupId>zemian.myapppackage</groupId>
+  <artifactId>single-app-example</artifactId>
+  <version>${revision}</version>
+  <packaging>jar</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <revision>1.0-SNAPSHOT</revision>
+    <finalPackageName>${project.artifactId}-${project.version}-single</finalPackageName>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.4</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <!-- 
+          NOTE: Enabling custom naming for assembly has interesting affect
+          on replacing main artifact name! Enabling these two will generate
+          a WARNING message that you can explore more.
+
+          <finalName>${finalPackageName}</finalName>
+          <appendAssemblyId>false</appendAssemblyId> 
+          -->
+          <formats>
+              <format>jar</format>
+          </formats>
+        </configuration>        
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.8.1</version>
+    </dependency>
+  	<dependency>
+  		<groupId>org.junit.jupiter</groupId>
+  		<artifactId>junit-jupiter-engine</artifactId>
+  		<version>5.3.2</version>
+  		<scope>test</scope>
+  	</dependency>
+  </dependencies>
+</project>

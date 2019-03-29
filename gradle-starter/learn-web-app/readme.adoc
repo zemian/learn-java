@@ -1,0 +1,11 @@
+== Build and Run
+
+This project contains the minimal setup to build an web application.
+
+  ./gradle build
+ 
+  brew install jetty-runner
+  jetty-runner build/libs/learn-web-app.war
+
+NOTE: The `jetty-runner` only works up to JDK 1.8. It has been deprecated
+for JDK 9+. See https://github.com/eclipse/jetty.project/issues/1905

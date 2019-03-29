@@ -1,0 +1,76 @@
+= Hello Java
+
+A simple Servlet based web application that demonstrate how to setup Tomcat Container security with
+user login logic. We will use PostgreSQL database to store the user/role information.
+
+This is based on "servlet-login" branch, and the difference is set use a DB Pool and JNDI DataSource
+instead of direct DB connection.
+
+== Setup
+
+Download `postgresql-42.1.4.jar` into `tomcat-base/lib`
+
+== Setup Database
+
+First database setup
+
+----
+# Create a user that can create db
+createuser -d test
+
+# Create the database
+createdb -U test test
+
+# Grant user with database
+psql -c 'grant all privileges on database test to test'
+
+# Create database schema
+psql -U test -d test -f db/01_create.sql
+----
+
+If you need to drop db:
+
+  dropdb -U test test
+
+== Setup user table
+
+We provide db schema script in "db/00_create.sql".
+
+Our table is based on Tomcat doc here:
+
+https://tomcat.apache.org/tomcat-8.5-doc/realm-howto.html
+
+== How to setup Tomcat
+
+We have created a `$CATALINA_BASE` directory in "tomcat-base". This configuration is based on Tomcat 8.5
+
+You may start your Tomcat with this base like this:
+
+----
+mvn package
+tomcat-base/bin/run.sh
+----
+
+=== Database Driver Setup on Tomcat
+
+For convenience we have added PostgreSQL driver jar into `tomcat-base/lib` directory.
+
+If you want you can sync and copy the latest from the maven by running the following command:
+
+  mvn dependency:copy-dependencies
+
+
+=== Webapp Deployment in `tomcat-base`
+
+For easier deployment, we have added the `target/target/hello-java-1.0-SNAPSHOT` in the
+`tomcat-base/conf/server.xml`. This needs to be added/removed if you want to customize or update
+the version of this project.
+
+== Populating Sample Data
+
+  mvn compile exec:java -Dexec.mainClass=com.zemian.hellojava.UserSample -Daction=insert
+  mvn compile exec:java -Dexec.mainClass=com.zemian.hellojava.SettingSample -Daction=insert
+
+== How to Run
+
+Package the war file and deploy into a Tomcat server.

@@ -1,0 +1,15 @@
+
+== How this project is setup
+
+  ../gradle-5.2.1/bin/gradle init
+  # project type: java-application
+
+== Getting Started
+
+  ./gradlew tasks
+  ./gradlew build
+  
+  ./gradlew run
+
+  ./gradlew clean distZip
+  find build/distributions

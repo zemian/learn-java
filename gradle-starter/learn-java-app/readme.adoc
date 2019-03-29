@@ -1,0 +1,21 @@
+== Plugin Setup
+
+Plain Java
+
+  plugins{ id 'java' }
+
+Java Library
+
+  plugins{ id 'java-library' }
+
+Java Application
+
+  plugins { id 'application' } 
+  
+But this is probably more clear for java application
+
+  plugins { 
+  	id 'java'
+  	id 'application' 
+  }
+  

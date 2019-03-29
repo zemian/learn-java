@@ -1,0 +1,3 @@
+A Java Starter Project
+
+This project based on maven-archetype-quickstart.

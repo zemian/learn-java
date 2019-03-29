@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>zemian.maven</groupId>
+  <artifactId>vars</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.gmaven</groupId>
+          <artifactId>groovy-maven-plugin</artifactId>
+          <version>2.1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.gmaven</groupId>
+        <artifactId>groovy-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <configuration>
+              <!--
+                How to get Maven parent root directory
+              There are two ways to refere to prent project root directory
+              1) Use java sys props: ${user.dir} (CWD)
+              2) Use maven ${session.executionRootDirectory}
+              --> 
+              <source>${user.dir}/myscript.groovy</source>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <dependencies>
+  </dependencies>
+
+  <modules>
+    <module>vars-mod1</module>
+  </modules>
+</project>
