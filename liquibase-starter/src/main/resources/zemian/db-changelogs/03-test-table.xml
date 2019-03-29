@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="021410191201" author="zemian">
+        <addColumn tableName="test">
+            <column name="price" type="numeric(19,4)"/>
+            <column name="qty" type="int"/>
+            <column name="txtdata" type="text"/>
+            <column name="bindata" type="bytea"/>
+            <column name="distx" type="real"/>
+            <column name="disty" type="double precision"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="021410191206" author="zemian">
+        <insert tableName="test">
+            <column name="cat" value="test"/>
+            <column name="price" valueNumeric="100000.10"/>
+            <column name="qty" value="50000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="021410191211" author="zemian">
+        <insert tableName="test">
+            <column name="cat" value="test"/>
+            <column name="price" valueNumeric="100000.20"/>
+            <column name="qty" value="0"/>
+        </insert>
+        <insert tableName="test">
+            <column name="cat" value="test"/>
+            <column name="price" valueNumeric="100000.00"/>
+            <column name="qty" value="1"/>
+        </insert>
+        <insert tableName="test">
+            <column name="cat" value="test"/>
+            <column name="price" valueNumeric="9977000.3333"/>
+            <column name="qty" value="179"/>
+        </insert>
+        <insert tableName="test">
+            <column name="cat" value="test"/>
+            <column name="price" valueNumeric="104729.1129"/>
+            <column name="qty" value="104729"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
