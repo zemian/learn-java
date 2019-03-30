@@ -48,3 +48,16 @@ Hamcrest is a very nice assertion helper that works really well with JUnit. It
 helps all assertion easy to write and consistently with `assertThat`.
 
 http://hamcrest.org/JavaHamcrest/
+
+NOTE: Starting hamcrest 2.1, you only need the following one dep:
+
+----
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>2.1</version>
+            <scope>test</scope>
+        </dependency>
+----
+
+For hamcrest 1.x, you would need to use `hamcrest-library`.
