@@ -10,6 +10,6 @@ class HelloTest {
 
     @Test
     void getMessage() {
-        assertThat(hello.getMessage(), "Hello World");
+        assertThat(hello.getMessage(), is("Hello World"));
     }
 }
