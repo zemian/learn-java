@@ -23,3 +23,29 @@ Note unfortunately the default `maven-archetype-plugin` generates very
 basic and outdated default project settings. Example default compile
 to Java 1.5 and using JUnit3! User need to manaully update these after
 the project is generated to something more modern.
+
+== Questions and Tips
+
+=== How to recompile Java to display unchecked warnings
+
+You get message:
+----
+[WARNING] ../HelloJob.java: Recompile with -Xlint:unchecked for details.
+
+Then try add this to pom.xml:
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-Xlint:all,-options,-path</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+----

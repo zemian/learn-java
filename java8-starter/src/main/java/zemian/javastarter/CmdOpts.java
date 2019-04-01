@@ -54,6 +54,7 @@ public class CmdOpts {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void addOpt(String option) {
         if (option != null && !"".equals(option)) {
             String[] options = option.split("=", 2);
