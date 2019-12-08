@@ -36,7 +36,7 @@ To install OracleJDK8 on Windows without admin rights, see https://zemian.github
 ----
 curl -s "https://get.sdkman.io" | bash
 sdk install java
----
+----
 
 NOTE: The SDK requires `bash` and `zip` commands. On windows, you can use `Git for Windows` that comes with bash, and then install 7-zip for `zip` command!
 
