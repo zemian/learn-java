@@ -4,6 +4,8 @@ package zemian.javastarter;
  * A general application unchecked exception.
  */
 public class AppException extends RuntimeException {
+    private static final long serialVersionUID = -4652694244608067323L;
+
     public AppException() {
     }
 
