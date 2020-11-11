@@ -1,3 +1,4 @@
+// Lesson 2
 public class PrimitiveTypes {
     public static void main(String[] args) {
         // # The 8 primitive types
