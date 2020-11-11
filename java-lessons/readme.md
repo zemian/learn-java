@@ -9,7 +9,16 @@ See Java Base API https://docs.oracle.com/en/java/javase/11/docs/api/java.base/m
 * `basic` - Learn the basic of Java Programming Language
 * `commontasks` - Learn how to do some common tasks in java
 
-## Resources
+## How to compile
+
+Just `cd` into each sub directory and compile all files.
+
+```
+cd basic
+javac *.java
+```
+
+## More Resources
 
 * https://www.oracle.com/java/technologies/javase-downloads.html
 * https://docs.oracle.com/en/java/javase/11/docs/api/index.html
