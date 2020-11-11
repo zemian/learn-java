@@ -6,7 +6,7 @@
 // - Notice how we created a classes inside our main class (nested or inner classes)
 // - Explore how "javac" generate ".class" files on these inner classes.
 // - Notice that all code in Java program must be inside one or more classes!
-public class Lesson05_ClassesFunctionsHolder {
+public class Lesson05_ClassFunctionsHolder {
     public static void main(String[] args) {
         // You can access functions in Class with "dot" operator
         MyFunction.printHi();

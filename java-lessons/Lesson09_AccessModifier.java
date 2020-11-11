@@ -6,7 +6,7 @@
 // - https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
 // - Review how package work again and see how access modifier affects it
 // - Learn about "default" access modifier
-public class Lesson09_ClassesAccessModifier {
+public class Lesson09_AccessModifier {
     public static void main(String[] args) {
         Truck truck = new Truck("Red", 10_000);
         System.out.println(truck.getDescription());

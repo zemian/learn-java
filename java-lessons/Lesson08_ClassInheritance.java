@@ -7,7 +7,7 @@
 // - Class can implements many Interface (empty class definition.)
 // - What is polymorphism: https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html
 // - Learn what class encapsulation mean
-public class Lesson08_ClassesInheritance {
+public class Lesson08_ClassInheritance {
     public static void main(String[] args) {
         Truck truck = new Truck("Red", 10_000);
         System.out.println(truck.getDescription());
