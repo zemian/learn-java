@@ -10,7 +10,7 @@
 //   java.util.*, java.io.*, java.text.*
 //
 
-import lesson06.Apple;
+import lesson06.Apple; // Or you can do "lesson06.*" to import all classes
 
 // Use import statement to bring in class definitions
 public class Lesson06_Packages {

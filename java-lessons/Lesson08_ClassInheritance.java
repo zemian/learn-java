@@ -48,7 +48,8 @@ public class Lesson08_ClassInheritance {
             this.loadCapacityInTon = loadCapacityInTon;
         }
 
-        // Override method
+        // Override method - notice we use a special "Annotation" to clarify code.
+        @Override
         public String getDescription() {
             return "My truck color is " + this.color + " with " +
                     this.loadCapacityInTon + " tons capacity.";

@@ -8,6 +8,8 @@
 // - Explore what happen when you mix types when using with operators
 // - Learn how to use good name on variable!
 // - Learn some of the common String function/methods you can use
+// - Learn that you can assign "null" value into Object like String or Integer!
+// - Learn more on java.util.Arrays class and it's methods
 public class Lesson02_PrimitiveTypes {
     public static void main(String[] args) {
         // # The 8 primitive types
@@ -68,7 +70,7 @@ public class Lesson02_PrimitiveTypes {
         System.out.println(list[0]);
 
         // ## Object wrapper for primitive types
-        Integer intObj = new Integer(99); // Redundant
+        Integer intObj = new Integer(99); // Redundant to use "new"
         Integer intObj2 = 99; // Default to use Autoboxing
         Double doubleObj = 3.14;
         Integer[] intArray = {1, 2, 3};
