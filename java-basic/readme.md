@@ -56,7 +56,11 @@ This is available for MacOSX only.
 
 ## Java Class Major Version Numbers
 
-https://stackoverflow.com/questions/9170832/list-of-java-class-file-format-major-version-numbers
+How to check it:
+
+```
+javap -v build/com/foo/Hello.class | grep "major"
+```
 
 ```
 Java 1.2 uses major version 46
@@ -71,4 +75,8 @@ Java 10 uses major version 54
 Java 11 uses major version 55
 Java 12 uses major version 56
 Java 13 uses major version 57
+Java 14 uses major version 58
+Java 15 uses major version 59
 ```
+
+Ref: https://stackoverflow.com/questions/9170832/list-of-java-class-file-format-major-version-numbers
