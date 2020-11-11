@@ -1,9 +1,15 @@
-// Lesson 2
+// Lesson 2 - Different types of data types in Java
+// Further study:
+// - Explore the data range for each type
+// - Explore more operators you can use for each data type
+// - Explore some basic operators you can use on each type
+// - Explore what happen when you mix types when using with operators
+// - Learn how to use good name on variable!
+// - Learn some of the common String function/methods you can use
 public class Lesson02_PrimitiveTypes {
     public static void main(String[] args) {
         // # The 8 primitive types
         // https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
-        // Note the data range.
 
         byte b = 0x7F;
         short s = 99;
@@ -49,7 +55,7 @@ public class Lesson02_PrimitiveTypes {
         System.out.println(str);
         System.out.println(str + " bar");
         System.out.println(str + 3.14);
-        System.out.println(str.length());
+        System.out.println(str.length()); // Use of "dot" operator here
         System.out.println(str.substring(0, 2));
         System.out.println(str.indexOf("o"));
         char[] characters = str.toCharArray();

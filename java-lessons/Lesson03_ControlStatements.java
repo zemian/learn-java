@@ -1,4 +1,12 @@
-// Lesson 3
+// Lesson 3 - A statement is a line of executable code.
+//            We can control which statement(s) to execute and
+//            which ones to skip over, or even repeat them.
+// Further study:
+// - Learn about "switch" control statement (alternate to like if/elseif/else)
+// - Learn about "do-while" loop
+// - Learn about "continue" and "break" in loop
+//
+// Ref:
 // https://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html
 public class Lesson03_ControlStatements {
     public static void main(String[] args) {
