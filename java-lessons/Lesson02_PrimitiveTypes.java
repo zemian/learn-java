@@ -1,5 +1,5 @@
 // Lesson 2
-public class PrimitiveTypes {
+public class Lesson02_PrimitiveTypes {
     public static void main(String[] args) {
         // # The 8 primitive types
         // https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html

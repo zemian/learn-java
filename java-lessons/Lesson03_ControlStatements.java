@@ -1,6 +1,6 @@
 // Lesson 3
 // https://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html
-public class ControlStatements {
+public class Lesson03_ControlStatements {
     public static void main(String[] args) {
         // Shortcut - increment/decrement operators
         int n = 0;
