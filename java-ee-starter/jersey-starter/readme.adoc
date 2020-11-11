@@ -1,0 +1,46 @@
+Jersey RESTful Web Services framework is open source, production quality, framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation.
+
+https://jersey.github.io/
+
+== Getting Started
+
+----
+mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-grizzly2 \
+-DarchetypeGroupId=org.glassfish.jersey.archetypes -DinteractiveMode=false \
+-DgroupId=com.example -DartifactId=simple-service -Dpackage=com.example \
+-DarchetypeVersion=2.28
+----
+
+== Examples
+
+https://github.com/eclipse-ee4j/jersey/tree/master/examples
+
+== Other RESTFul Application Demos
+
+=== Sample Data Provided by REST Endpoints
+
+- https://restcountries.eu/
+- http://dummy.restapiexample.com/
+- https://reqres.in/
+- https://any-api.com/
+- https://developer.github.com/v3/
+
+=== REST Client Tester
+
+Online WebApp
+
+- https://resttesttest.com/
+
+Desktop Client
+
+- https://www.getpostman.com/
+- https://insomnia.rest/ (Commercial?)
+- https://www.jetbrains.com/[IntelliJ IDEA Plugin]
+- http://restclient.net/[Firefox Addon]
+- https://www.soapui.org/
+
+Command Line Client
+
+- https://httpie.org/
+- curl
+- wget

@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jboss.weld</groupId>
+        <artifactId>weld-core-parent</artifactId>
+        <version>3.1.0.Final</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <groupId>org.jboss.weld.examples</groupId>
+    <artifactId>weld-examples-parent</artifactId>
+  <version>3.1.0.Final</version>
+    <packaging>pom</packaging>
+    <name>Weld Examples</name>
+
+    <description>
+        Examples for Weld, the reference implementation of CDI
+    </description>
+
+    <url>http://weld.cdi-spec.org</url>
+
+    <developers>
+        <developer>
+            <name>Pete Muir</name>
+            <roles>
+                <role>Project Founder</role>
+            </roles>
+            <email>pete.muir@jboss.org</email>
+            <organization>JBoss, a division of Red Hat</organization>
+            <url>http://in.relation.to/Bloggers/Pete</url>
+        </developer>
+
+        <developer>
+            <name>Ales Justin</name>
+            <roles>
+                <role>Project Lead</role>
+            </roles>
+            <email>ales.justin@jboss.org</email>
+            <organization>JBoss, a division of Red Hat</organization>
+            <url>http://in.relation.to/Bloggers/Ales</url>
+        </developer>
+
+        <developer>
+            <name>Jozef Hartinger</name>
+            <roles>
+                <role>Project Lead</role>
+            </roles>
+            <email>jharting@redhat.com</email>
+            <organization>JBoss, a division of Red Hat</organization>
+            <url>http://in.relation.to/Bloggers/Jozef</url>
+        </developer>
+
+        <developer>
+            <name>Shane Bryzak</name>
+            <organization>JBoss, a division of Red Hat</organization>
+        </developer>
+
+        <developer>
+            <name>David Allen</name>
+        </developer>
+
+        <developer>
+            <name>Nicklas Karlsson</name>
+        </developer>
+
+        <developer>
+            <name>Clint Popetz</name>
+        </developer>
+
+        <developer>
+            <name>Pete Royle</name>
+        </developer>
+
+    </developers>
+    <ciManagement>
+        <system>Hudson</system>
+        <url>http://hudson.jboss.org</url>
+    </ciManagement>
+
+    <issueManagement>
+        <system>JIRA</system>
+        <url>http://jira.jboss.org/browse/WELD</url>
+    </issueManagement>
+
+    <inceptionYear>2008</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <modules>
+        <module>jsf/numberguess</module>
+        <module>jsf/translator</module>
+        <module>jsf/login</module>
+        <module>jsf/pastecode</module>
+        <module>se/numberguess</module>
+        <module>se/groovy-numberguess</module>
+    </modules>
+
+    <properties>
+        <jboss.jsf.api.2.3.version>2.3.5.SP1</jboss.jsf.api.2.3.version>
+        <jboss.servlet.api.4.0.version>1.0.0.Final</jboss.servlet.api.4.0.version>
+        <jsf.version>2.3</jsf.version>
+        <facelets.version>1.1.15</facelets.version>
+        <wildfly.plugin.version>2.0.0.Final</wildfly.plugin.version>
+        <uel.version>3.0.1-b11</uel.version>
+        <ftest.sources.directory>src/ftest/java</ftest.sources.directory>
+        <ftest.resources.directory>src/ftest/resources</ftest.resources.directory>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>javax.faces</groupId>
+                <artifactId>javax.faces-api</artifactId>
+                <version>${jsf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.faces</groupId>
+                <artifactId>jboss-jsf-api_2.3_spec</artifactId>
+                <version>${jboss.jsf.api.2.3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax</groupId>
+                <artifactId>jboss-servlet-api_4.0_spec</artifactId>
+                <version>${jboss.servlet.api.4.0.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>${uel.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${arquillian.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.extension</groupId>
+                <artifactId>arquillian-drone-bom</artifactId>
+                <version>${arquillian.drone.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.graphene</groupId>
+                <artifactId>graphene-webdriver</artifactId>
+                <version>${arquillian.graphene.version}</version>
+                <type>pom</type>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.extension</groupId>
+                <artifactId>arquillian-drone-webdriver-depchain</artifactId>
+                <version>${arquillian.drone.version}</version>
+                <type>pom</type>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration combine.self="override">
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <configuration>
+                        <ejbVersion>3.2</ejbVersion>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ear-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <!-- Work around issues encountered with http://jira.codehaus.org/browse/MWAR-187
+                    during release -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <configuration>
+                        <useCache>false</useCache>
+                    </configuration>
+                </plugin>
+                <!-- WildFly plugin to deploy war -->
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>${wildfly.plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+
+        <profile>
+            <id>ftest</id>
+            <activation>
+                <property>
+                    <name>arquillian</name>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>build-helper-maven-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <id>add-ftest-source</id>
+                                    <goals>
+                                        <goal>add-test-source</goal>
+                                    </goals>
+                                    <configuration>
+                                        <sources>
+                                            <source>${ftest.sources.directory}</source>
+                                        </sources>
+                                    </configuration>
+                                </execution>
+                                <execution>
+                                    <id>add-ftest-resource</id>
+                                    <goals>
+                                        <goal>add-test-resource</goal>
+                                    </goals>
+                                    <configuration>
+                                        <resources>
+                                            <resource>
+                                                <directory>${ftest.resources.directory}</directory>
+                                                <targetPath>.</targetPath>
+                                            </resource>
+                                        </resources>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <configuration>
+                                <systemProperties>
+                                    <arquillian.launch>${arquillian}</arquillian.launch>
+                                    <jacoco.agent>${jacoco.agent}</jacoco.agent>
+                                    <additional.vm.args>${additional.vm.args}</additional.vm.args>
+                                </systemProperties>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>surefire-it</id>
+                                    <phase>integration-test</phase>
+                                    <goals>
+                                        <goal>test</goal>
+                                    </goals>
+                                    <configuration>
+                                        <skip>false</skip>
+                                        <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                                        <trimStackTrace>false</trimStackTrace>
+                                        <printSummary>true</printSummary>
+                                        <includes>
+                                            <include>**/ftest/*Test.java</include>
+                                        </includes>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
+        <profile>
+            <id>arquillian-wildfly-managed</id>
+            <activation>
+                <property>
+                    <name>arquillian</name>
+                    <value>wildfly-managed</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly.arquillian</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>arquillian-wildfly-remote</id>
+            <activation>
+                <property>
+                    <name>arquillian</name>
+                    <value>wildfly-remote</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly.arquillian</groupId>
+                    <artifactId>wildfly-arquillian-container-remote</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>arquillian-wildfly-cluster</id>
+            <activation>
+                <property>
+                    <name>arquillian</name>
+                    <value>wildfly-cluster</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly.arquillian</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <id>surefire-it</id>
+                                    <phase>integration-test</phase>
+                                    <goals>
+                                        <goal>test</goal>
+                                    </goals>
+                                    <configuration>
+                                        <systemPropertyVariables>
+                                            <node1.contextPath>${node1.contextPath}</node1.contextPath>
+                                            <node1.managementAddress>${node1.managementAddress}
+                                            </node1.managementAddress>
+                                            <node1.managementPort>${node1.managementPort}</node1.managementPort>
+                                            <node1.jbossHome>${node1.jbossHome}</node1.jbossHome>
+                                            <node1.nodeName>${node1.nodeName}</node1.nodeName>
+
+                                            <node2.contextPath>${node2.contextPath}</node2.contextPath>
+                                            <node2.managementAddress>${node2.managementAddress}
+                                            </node2.managementAddress>
+                                            <node2.managementPort>${node2.managementPort}</node2.managementPort>
+                                            <node2.jbossHome>${node2.jbossHome}</node2.jbossHome>
+                                            <node2.nodeName>${node2.nodeName}</node2.nodeName>
+                                        </systemPropertyVariables>
+
+                                        <skip>false</skip>
+                                        <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                                        <trimStackTrace>false</trimStackTrace>
+                                        <printSummary>true</printSummary>
+                                        <includes>
+                                            <include>**/ftest/cluster/*Test.java</include>
+                                        </includes>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
+        <profile>
+            <id>jacoco</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>jacoco</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <configuration>
+                            <propertyName>jacoco.agent</propertyName>
+                            <excludes>
+                                <exclude>org.jboss.weld.examples.*</exclude>
+                            </excludes>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>jboss-public-repository</id>
+            <!-- Repository is active unless explicitly disabled e.g. -P!jboss-public-repository -->
+            <activation>
+                <property>
+                    <name>jboss-public-repository</name>
+                    <value>!false</value>
+                </property>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>jboss-public-repository-group</id>
+                    <name>JBoss Public Maven Repository Group</name>
+                    <url>http://repository.jboss.org/nexus/content/groups/public</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>jboss-public-repository-group</id>
+                    <name>JBoss Public Maven Repository Group</name>
+                    <url>http://repository.jboss.org/nexus/content/groups/public</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+</project>

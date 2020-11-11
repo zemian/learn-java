@@ -1,0 +1,9 @@
+Explore JPA (Java Persistence API)
+
+== Learning Tutorial
+
+- https://www.javacodegeeks.com/2013/06/jpa-2-entitymanagers-transactions-and-everything-around-it.html[How EM and Transaction Works]
+
+== Books
+
+- https://www.amazon.com/Pro-JPA-Mastering-Persistence-Technology/dp/1430219564

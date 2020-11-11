@@ -1,0 +1,12 @@
+Quick Hello EAR Application
+
+== Build and Run
+	  
+	source ~/apps/oracle_home/wls12213/wlserver/server/bin/setWLSEnv.sh
+	ant build
+
+== Deploy to WebLogic Server
+
+1. Create and start a WebLogic Server with user/pass: `weblogic/weblogic123`
+2. Run `ant deploy`
+3. Open http://localhost:7001/hello/

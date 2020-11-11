@@ -1,0 +1,20 @@
+What is WildFly?
+
+WildFly is a flexible, lightweight, managed application runtime that helps you build amazing applications.
+
+https://wildfly.org/about
+
+== Releases and Java EE spec compliance
+
+|===
+|WildFly Release|Java EE Version
+|16.0.0.Final|Java EE 8
+|15.0.0.Final|Java EE 8
+|14.0.0.Final|Java EE 8
+|13.0.0.Final|Java EE 7 (and full EE8 Preview)
+|12.0.0.Final|Java EE 7 (and partial EE8 Preview)
+|===
+
+== Java EE Examples
+
+https://github.com/wildfly/quickstart

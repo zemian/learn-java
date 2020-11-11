@@ -1,0 +1,97 @@
+Weld is the reference implementation of CDI: Contexts and Dependency Injection for the Java EE Platform - a JCP standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE. Weld is integrated into many Java EE application servers such as WildFly, JBoss Enterprise Application Platform, GlassFish, Oracle WebLogic Server, WebSphere Application Server and others. Weld can also be used in plain servlet containers (Tomcat, Jetty) or Java SE.
+
+- http://weld.cdi-spec.org/
+- http://docs.jboss.org/weld/reference/latest/en-US/html
+- https://docs.jboss.org/weld/javadoc/3.0/weld-api/
+- https://javaee.github.io/javaee-spec/javadocs/index.html?javax/inject
+
+== Build and run
+
+Build
+
+  mvn compile
+
+Run hello demo
+
+  mvn exec:java -Dexec.mainClass=zemian.weldstarter.Hello
+  mvn exec:java -Dexec.mainClass=zemian.weldstarter.Hello -Dorg.jboss.logging.provider=slf4j -Dorg.slf4j.simpleLogger.log.org.jboss.weld=debug
+
+Run with Weld built-in Bootstrap
+
+  mvn exec:java -Dexec.mainClass=org.jboss.weld.environment.se.StartMain
+
+Build jar and run without maven
+
+  mvn dependency:copy-dependencies compile
+  java -cp 'target/dependency/*:target/classes' zemian.weldstarter.Hello
+
+
+Build and test different `beans.xml` deployment (eg: using `src/main/resources-discover-all`)
+
+  mvn compile -P discover-all
+  mvn exec:java -Dexec.mainClass=org.jboss.weld.environment.se.StartMain
+
+== More Examples
+
+https://github.com/weld/core/tree/master/examples
+
+== Setup JUnit
+
+https://github.com/weld/weld-junit
+
+== Setup Logging
+
+Weld will auto setup logging depending on what logger impl you include in classpath.
+By default it uses JDK Logger.
+
+If you want to use Weld to auto detect SLF4J, you must include Logback in classpath. Else
+you would need to explicitly set the SLF4J provider.
+
+Two ways to explicitly set `LoggerProvider`:
+
+1. Use Sys Props such as `-Dorg.jboss.logging.provider=slf4j`
+
+2. Write your own `LoggerProvider` and add to `META-INF/services/org.jboss.logging.LoggerProvider`
+file. Not that you can not use built-in such as `org.jboss.logging.Slf4jLoggerProvider`, because
+they are not declared public!
++
+See
+- https://issues.jboss.org/browse/JBLOGGING-111
+- http://docs.jboss.org/weld/reference/latest/en-US/html/logging.html
+- https://github.com/jboss-logging/jboss-logging/blob/master/src/main/java/org/jboss/logging/LoggerProviders.java
+
+== Versions
+
+----
+Binary distribution
+Version 	Category  CDI version 	Release date 	Changelog 	Download
+3.1.0.Final Final 	  2.0 	        07.02.2019 	    Changelog 	Download
+2.4.8.Final Final 	  1.2 	        26.09.2018 	    Changelog 	Download
+3.0.5.Final Final 	  2.0 	        27.07.2018 	    Changelog 	Download
+3.0.4.Final Final 	  2.0 	        26.04.2018 	    Changelog 	Download
+2.4.7.Final Final 	  1.2 	        20.3.2018 	    Changelog 	Download
+3.0.3.Final Final 	  2.0 	        08.02.2018 	    Changelog 	Download
+2.4.6.Final Final 	  1.2 	        14.12.2017 	    Changelog 	Download
+3.0.2.Final Final 	  2.0 	        23.11.2017 	    Changelog 	Download
+2.4.5.Final Final 	  1.2 	        11.08.2017 	    Changelog 	Download
+3.0.1.Final Final 	  2.0 	        25.08.2017 	    Changelog 	Download
+----
+
+NOTE: There is no 1.2 version of the beans schema, but only 1.1 (http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd)
+
+== Questions
+
+1. Why `Hello` se weld takes 20 secs to run?
+
+This only because we run it with `mvn exec:java`. For some odd reason this cause
+the shutdown process to have about 20 sec delay! Build the application and run it
+as plain `java` then it will run fast.
+
+2. How to configure SLF4J on JUnit without use of Sys Props?
+
+Solution1: Add Logback in dependency classpath!
+
+Solution2: Add System Property `-Dorg.jboss.logging.provider=slf4j`.
+
+NOTE: You can't use `META-INF/services/org.jboss.logging.LoggerProvider` file
+unless you write your own custom `LoggerProvider`.

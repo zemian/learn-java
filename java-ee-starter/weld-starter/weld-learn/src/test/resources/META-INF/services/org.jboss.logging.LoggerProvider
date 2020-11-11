@@ -1,0 +1,5 @@
+# You can't use these built-in logger provider because they not declare public!
+# That means you have to write your own!
+
+#org.jboss.logging.Slf4jLoggerProvider
+#org.jboss.logging.JDKLoggerProvider

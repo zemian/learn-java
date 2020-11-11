@@ -1,0 +1,21 @@
+== Build and Run
+
+  mvn jetty:run
+  Open http://localhost:8080/
+
+== Demos
+
+- http://localhost:8080/info.jsp[List of Web Information]
+- http://localhost:8080/env.jsp[List of SysProps and Env]
+- http://localhost:8080/realpath.jsp?res=/WEB-INF/jsp/index.jsp[Find Resource in System Path]
+- http://localhost:8080/find-res.jsp?res=/WEB-INF/jsp/index.jsp[Find Resource in Classpath]
+- http://localhost:8080/env.jsp[List of SysProps and Env]
+- http://localhost:8080/ee-impl[List of EE Implementations]
+
+
+= Web Design Tools and Resources
+
+- https://getbootstrap.com/[HTML & Web Design]
+- https://html5up.net/[HTML Design Templates]
+- https://unsplash.com/[Photos and Art Collections]
+- https://vuejs.org/[JavaScript Framework for UI]

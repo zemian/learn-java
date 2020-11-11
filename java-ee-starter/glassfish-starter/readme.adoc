@@ -1,0 +1,13 @@
+Eclipse GlassFish is a Jakarta EE compatible implementation sponsored by the Eclipse Foundation. Eclipse GlassFish 5.1 is Java EE 8 Compatible.
+
+- https://eclipse-ee4j.github.io/glassfish/
+- https://github.com/eclipse-ee4j/glassfish
+- https://eclipse-ee4j.github.io/glassfish/documentation
+
+== Old GlassFish Project Site
+
+- https://javaee.github.io/glassfish/
+- https://javaee.github.io/glassfish/documentation
+
+NOTE: This project is now part of the https://projects.eclipse.org/projects/ee4j[EE4J] initiative; this repository has been archived as all activities are now happening in the corresponding Eclipse repository.
+See here for the EE4J transition status. 

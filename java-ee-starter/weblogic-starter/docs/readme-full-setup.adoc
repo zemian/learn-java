@@ -1,0 +1,108 @@
+Oracle Weblogic Server
+
+Oracle WebLogic Server 12c R2 is the industry's best application server for building and deploying enterprise Java EE applications with support for new features for lowering cost of operations, improving performance, enhancing scalability and supporting the Oracle Applications portfolio. WebLogic Server Java EE applications are based on standardized, modular components; WebLogic Server provides a complete set of services for those modules and handles many details of application behavior automatically, without requiring programming.
+
+https://www.oracle.com/middleware/technologies/weblogic.html
+https://docs.oracle.com/en/middleware/middleware.html
+https://docs.oracle.com/middleware/12213/wls/index.html
+
+== Downloads
+
+https://www.oracle.com/technetwork/middleware/weblogic/downloads/index.html
+
+Oracle WebLogic Server 12cR2 (12.2.1.3) 
+Quick Installer for Developers
+    
+Choose: "Generic Installer" (fmw_12.2.1.3.0_wls_Disk1_1of1) - 800MB
+
+
+== Typical WLS Env Variables
+
+`ORACLE_HOME` represents the directory you specified as the Oracle Home when you installed Oracle WebLogic Server; for example, `C:\Oracle\Middleware\Oracle_Home`.
+
+`WL_HOME`  represents the top-level installation directory for Oracle WebLogic Server. The default path is `ORACLE_HOME\wlserver`. (However, you are not required to install Oracle WebLogic Server in the Oracle Home directory.)
+
+`DOMAIN_HOME`  represents the directory in which the Oracle WebLogic Server code examples domains are configured. The default path is `ORACLE_HOME\user_projects\domains`.
+
+
+== Setup
+
+https://docs.oracle.com/en/middleware/lifecycle/12.2.1.3/wlsig/installing-weblogic-server-developers.html#GUID-207CA334-FEDD-4D35-9DCA-357E5FDFEB2E
+
+Open `cmd` as Administrator!
+
+----
+set JAVA_HOME=C:\Users\zde\apps\jdk-8u202
+cd C:/Users/zde/Downloads/fmw_12.2.1.3.0_wls_Disk1_1of1
+%JAVA_HOME%/bin/java -jar fmw_12.2.1.3.0_wls.jar
+----
+
+Default directory installation will be in `C:\Oracle\Middleware\Oracle_Home`
+
+=== 3.6.1 About the Recommended Directory Structure
+
+Recommended directory structure: https://docs.oracle.com/middleware/12212/lcm/ASINS/GUID-A3738BBA-5FD1-425B-91EB-7CB22187C700.htm#ASINS351
+
+	/home/oracle/product/Oracle_Home
+	/home/oracle/config/Domains
+	/home/oracle/config/Applications
+
+For Windows
+	C:\Oracle\Middleware\Oracle_Home
+	C:\Oracle\Middleware\Oracle_Home\user_projects\domains
+
+=== Setup Domains
+
+At this point, it's good idea to add current user to have Full Control access to the ORALCE_HOME files before creating the domains.
+
+https://docs.oracle.com/en/middleware/lifecycle/12.2.1.3/wlsig/creating-and-configuring-weblogic-domain.html#GUID-7926B1B5-1BD8-4BDB-A2B5-8E44B6864A53
+
+----
+set JAVA_HOME=C:\Users\zde\apps\jdk-8u202
+set ORACLE_HOME=C:\Oracle\Middleware\Oracle_Home
+cd %ORACLE_HOME%/oracle_common/common/bin
+.\config.cmd
+----
+
+NOTE: Make a note for the `weblogic` user and password you create in this config setup. You will
+need this to login to the admin console app later.
+
+Our first domain will be created under `C:\Oracle\Middleware\Oracle_Home\user_projects\domains\my_domain`
+
+=== Start the Server(s)
+
+https://docs.oracle.com/en/middleware/lifecycle/12.2.1.3/wlsig/creating-and-configuring-weblogic-domain.html#GUID-EE725034-68D8-4E30-9B8C-9884E430B850
+
+----
+set JAVA_HOME=C:\Users\zde\apps\jdk-8u202
+set ORACLE_HOME=C:\Oracle\Middleware\Oracle_Home
+set DOMAIN_HOME=C:\Oracle\Middleware\Oracle_Home\user_projects\domains\my_domain
+cd %DOMAIN_HOME%\bin
+startWebLogic.cmd
+----
+
+Open http://localhost:7001/console to verify admin server
+
+To start Managed Servers:
+  startManagedWebLogic.cmd managed_server_name admin_server_url
+
+To start NodeManager:
+  startNodeManager.cmd
+
+  NOTE the NodeManger might not able to start the first time on Windows?
+  	<Mar 6, 2019 8:42:19 AM EST> <SEVERE> <Fatal error in NodeManager server>
+  	weblogic.nodemanager.common.ConfigException: Identity key store file not found: C:\Oracle\Middleware\Oracle_Home\user_projects\domains\my_domain\security\DemoIdentity.jks
+  	        at weblogic.nodemanager.server.SSLConfig.loadKeyStoreConfig(SSLConfig.java:225)
+
+
+== Explore Code Examples
+
+`EXAMPLES_HOME`  represents the directory in which the Oracle WebLogic Server code examples are configured. The default path is `ORACLE_HOME\wlserver\samples\server`
+
+Example docs: `EXAMPLES_HOME\index.html`
+
+== WLS Development Guide
+
+EE Application: https://docs.oracle.com/middleware/12213/wls/WLPRG/index.html
+
+Web Applicaction: https://docs.oracle.com/middleware/12213/wls/WBAPP/index.html

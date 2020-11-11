@@ -1,0 +1,45 @@
+A Java EE application to learn about WebLogic Server. 
+
+- https://docs.oracle.com/middleware/12213/wls/INTRO/developing.htm
+- https://docs.oracle.com/middleware/12213/wls/WLPRG/splitcreate.htm
+
+The WebLogic split development directory environment consists of a directory layout and associated Ant tasks that help you repeatedly build, change, and deploy Java EE applications.
+
+== Build and Run
+	  
+	source ~/apps/oracle_home/wls12213/wlserver/server/bin/setWLSEnv.sh
+	ant build
+
+== Deploy to WebLogic Server
+
+1. Create and start a WebLogic Server with user/pass: `weblogic/weblogic123`
+2. Run `ant deploy`
+3. Open http://localhost:7001/hello/
+
+
+== What is an Java EE Application
+
+At runtime, a Java EE application is a type of module. A WebLogic Server Java EE application consists of one of the following modules or applications running on WebLogic Server:
+
+* Web application modules—HTML pages, servlets, JavaServer Pages, and related files. See Web Application Modules in Developing Applications for Oracle WebLogic Server.
+
+* Enterprise Java Beans (EJB) modules—entity beans, session beans, and message-driven beans. See Enterprise JavaBean Modules in Developing Applications for Oracle WebLogic Server.
+
+* Connector modules—resource adapters. See Connector Modules in Developing Applications for Oracle WebLogic Server.
+
+* Enterprise applications—web application modules, EJB modules, resource adapters and web services packaged into an application. See Enterprise Applications in Developing Applications for Oracle WebLogic Server.
+
+* Web services—See WebLogic Web Services in Developing Applications for Oracle WebLogic Server.
+
+
+== How Generate a `build.xml` for application
+
+----
+mkdir helloWorldEar
+cd helloWordEar
+source ~/apps/oracle_home/wls12213/wlserver/server/bin/setWLSEnv.sh
+java weblogic.BuildXMLGen .
+ant build
+----
+
+NOTE: The defualt build output directory is "/tmp". You can modify the build.xml to change it to "build".

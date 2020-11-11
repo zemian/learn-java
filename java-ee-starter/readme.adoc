@@ -1,0 +1,59 @@
+J2EE (1999) -> Java EE (2006) -> Jakarta EE (2018)
+
+Java Platform, Enterprise Edition (Java EE) is the standard in community-driven enterprise software. Java EE is developed using the Java Community Process, with contributions from industry experts, commercial and open source organizations, Java User Groups, and countless individuals. Each release integrates new features that align with industry needs, improves application portability, and increases developer productivity.
+
+- https://www.oracle.com/technetwork/java/javaee/overview/index.html
+- https://jakarta.ee/
+
+== Official EE Tutorials
+
+- https://eclipse-ee4j.github.io/jakartaee-tutorial/toc.html[Java EE (Jakarta EE) 8 Tutorial]
+- https://docs.oracle.com/javaee/7/tutorial/[Java EE 7 Tutorial]
+- https://docs.oracle.com/javaee/6/tutorial/[Java EE 6 Tutorial]
+- https://docs.oracle.com/javaee/5/tutorial/doc/[Java EE 5 Tutorial]
+- https://docs.oracle.com/cd/E17802_01/j2ee/j2ee/1.4/docs/tutorial-update6/doc/index.html[J2EE Tutorial]
+- https://www.oracle.com/technetwork/java/javaee/docs-142070.html[J2EE 1.3 Tutorial]
+- https://www.oracle.com/technetwork/java/javaee/docs-142435.html[J2EE 1.2 Tutorial]
+
+== Java EE Specs
+
+See `java-specs` folder
+
+== Java EE Examples
+
+- https://github.com/javaee-samples
+- https://github.com/javaee-samples/javaee7-samples[javaee7-samples]
+- https://github.com/weld/core/tree/3.1.0.Final/examples[weld-core-examples]
+- https://github.com/wildfly/quickstart/tree/16.0.0.Final[wildfly-qickstart]
+
+== Servlet and JSP Versions
+
+----
+Servlet Spec  JSP Spec  EL Spec   WebSocket Spec  JASPIC Spec  JDK
+4.0           2.3       3.0       1.1             1.1          8 and later
+3.1           2.3       3.0       1.1             1.1          7 and later
+3.1           2.3       3.0       1.1             N/A          7 and later
+3.0           2.2       2.2       1.1             N/A          6 and later
+2.5           2.1       2.1       N/A             N/A          5 and later
+2.4           2.0       N/A       N/A             N/A          1.4 and later
+2.3           1.2       N/A       N/A             N/A          1.3 and later
+2.2           1.1       N/A       N/A             N/A          1.1 and later
+----
+
+See https://stackoverflow.com/questions/17388175/how-to-know-which-servlet-and-jsp-version-am-i-using
+
+== History
+
+Java Platform, Enterprise Edition (Java EE), formerly Java 2 Platform, Enterprise Edition (J2EE), currently Jakarta EE, is a set of specifications, extending Java SE 8[
+
+* J2EE 1.2 (December 12, 1999)
+* J2EE 1.3 (September 24, 2001)
+* J2EE 1.4 (November 11, 2003)
+* Java EE 5 (May 11, 2006)
+* Java EE 6 (December 10, 2009)
+* Java EE 7 (May 28, 2013, but April 5, 2013 according to spec document. June 12, 2013 was the planned kickoff date)
+* Java EE 8 (August 31, 2017)
+
+Java EE was maintained by Oracle under the Java Community Process. On September 12, 2017, Oracle Corporation announced that it would submit Java EE to the Eclipse Foundation. The Eclipse top-level project has been named Eclipse Enterprise for Java (EE4J). The Eclipse Foundation was forced to change the name of Java EE because Oracle owns the trademark for the name "Java." On February 26, 2018, it was announced that the new name of Java EE will be Jakarta EE.
+
+https://en.wikipedia.org/wiki/Java_Platform,_Enterprise_Edition

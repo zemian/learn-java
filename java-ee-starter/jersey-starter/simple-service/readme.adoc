@@ -1,0 +1,6 @@
+== Build and Run
+
+  mvn package
+  mvn exec:java -Dexec.mainClass=com.example.Main
+  open http://localhost:8080/myapp/myresource
+ 

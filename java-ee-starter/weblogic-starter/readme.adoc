@@ -1,0 +1,52 @@
+Oracle Weblogic Server
+
+Oracle WebLogic Server 12c R2 is the industry's best application server for building and deploying enterprise Java EE applications with support for new features for lowering cost of operations, improving performance, enhancing scalability and supporting the Oracle Applications portfolio. WebLogic Server Java EE applications are based on standardized, modular components; WebLogic Server provides a complete set of services for those modules and handles many details of application behavior automatically, without requiring programming.
+
+- https://www.oracle.com/middleware/technologies/weblogic.html
+- https://docs.oracle.com/en/middleware/middleware.html
+- https://docs.oracle.com/middleware/12213/wls/index.html
+
+NOTE: WebLogic Server 12.2.1.3.0 supports Java EE 7 specs!
+
+== LICENSE
+
+Note the WebLogic is a commercial application server. You must accept their
+OTN License Agreement before downloading their software!
+
+See
+
+- https://www.oracle.com/technetwork/licenses/standard-license-152015.html
+- https://www.oracle.com/technetwork/middleware/weblogic/downloads/wls-main-097127.html
+
+== Downloads And Setup
+
+- Ensure you have Oracle JDK 1.8 installed (Note: Other JDK implementation will not work!)
+- If you are on Windows, ensure you have admin rights.
+- Downlowd Quick Installer from https://www.oracle.com/technetwork/middleware/weblogic/downloads/index.html
++
+Choose: "Quick Installer intended for Oracle WebLogic Server and Oracle Coherence development only." (fmw_12.2.1.3.0_wls_Disk1_1of1) - 231MB
+- Install it from a command line
+
+----
+cd ~/apps
+java -jar ~/Downloads/fmw_12.2.1.3.0_wls_quick_Disk1_1of1/fmw_12.2.1.3.0_wls_quick.jar
+
+mkdir -p wls12213/user_projects/domains/domain
+cd wls12213/user_projects/domains/domain
+. ~/apps/wls12213/wlserver/server/bin/setWLSEnv.sh
+java weblogic.Server
+# For the first time, it will prompt you for new username/password that you may login into /console below.
+open http://localhost:7001/console
+----
+
+NOTE: 
+
+=== Installing the Suppliments/Samples
+
+----
+cd ~/apps  
+java -jar /Users/zemian/Downloads/fmw_12.2.1.3.0_wls_supplemental_quick_Disk1_1of1/fmw_12.2.1.3.0_wls_supplemental_quick.jar
+
+. ~/apps/wls12213/wlserver/samples/server/run_samples.sh
+# For the first time, it will prompt you for new username/password that you may login into /console.
+----

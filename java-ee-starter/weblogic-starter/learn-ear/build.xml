@@ -1,0 +1,119 @@
+<project name="learn-ear" default="help">
+
+  <!-- This build file was automatically generated at 10:53:13 AM on Mar 26, 2019 by weblogic.BuildXMLGen -->
+
+  <!-- BUILD PROPERTIES ADJUST THESE FOR YOUR ENVIRONMENT -->
+  <property name="tmp.dir" value="build" />
+  <property name="dist.dir" value="${tmp.dir}/dist"/>
+  <property name="app.name" value="learn-ear" />
+  <property name="ear" value="${dist.dir}/${app.name}.ear"/>
+  <property name="ear.exploded" value="${dist.dir}/${app.name}_exploded"/>
+  <property name="verbose" value="true" />
+  <property name="user" value="weblogic" />
+  <property name="password" value="weblogic123" />
+  <property name="servername" value="myserver" />
+  <property name="adminurl" value="iiop://localhost:7001" />
+
+  <property name="src.dir" value="." />
+  <property name="dest.dir" value="${tmp.dir}/${app.name}" />
+
+  <!-- Print's out the project help -->
+  <target name="help">
+    <java fork="no" classname="org.apache.tools.ant.Main">
+      <arg line="-projecthelp"/>
+    </java>
+  </target>
+
+  <typedef resource="weblogic/ant/taskdefs/antlib.xml"/>
+
+  <!-- Builds the entire learn-ear application -->
+  <target name="build" depends="compile, appc" description="Compiles learn-ear application and runs appc" />
+
+  <!-- Only compiles learn-ear application, no appc -->
+  <target name="compile" description="Only compiles learn-ear application, no appc">
+    <wlcompile srcdir="${src.dir}" destdir="${dest.dir}" />
+  </target>
+
+  <!-- Deletes the dest.dir to clean the build -->
+  <target name="clean" description="Deletes the build directory">
+    <delete dir="${dest.dir}" />
+  </target>
+
+
+  <!-- Runs weblogic.appc on your application -->
+  <target name="appc" description="Runs weblogic.appc on your application">
+    <wlappc source="${dest.dir}" verbose="${verbose}" />
+  </target>
+
+   
+  <!-- Builds just build of the application -->
+  <target name="compile.build" description="Compiles just the build module of the application">
+    <wlcompile srcdir="${src.dir}" destdir="${dest.dir}"
+               includes="build" />
+  </target>
+
+  <!-- Builds just learn of the application -->
+  <target name="compile.learn" description="Compiles just the learn module of the application">
+    <wlcompile srcdir="${src.dir}" destdir="${dest.dir}"
+               includes="learn" />
+  </target>
+
+
+  <!-- Deploys the entire learn-ear application -->
+  <target name="deploy" description="Deploys (and redeploys) the entire learn-ear application">
+    <wldeploy user="${user}" password="${password}" adminurl="${adminurl}"
+              action="deploy" source="${dest.dir}"
+              name="${app.name}" />
+  </target>
+
+  <!-- Undeploys the entire learn-ear application -->
+  <target name="undeploy" description="Undeploys the entire learn-ear application">
+    <wldeploy user="${user}" password="${password}" adminurl="${adminurl}"
+              action="undeploy" name="${app.name}" />
+  </target>
+
+  
+  <!-- Redeploys just build of the application -->
+  <target name="redeploy.build" description="Redeploys just the build module of the application">
+    <wldeploy user="${user}" password="${password}" adminurl="${adminurl}"
+              action="redeploy" targets="build@${servername}"
+              name="${app.name}" />
+  </target>
+
+  <!-- Redeploys just learn of the application -->
+  <target name="redeploy.learn" description="Redeploys just the learn module of the application">
+    <wldeploy user="${user}" password="${password}" adminurl="${adminurl}"
+              action="redeploy" targets="learn@${servername}"
+              name="${app.name}" />
+  </target>
+
+
+ 
+  <!-- Package a standard Java EE ear for distribution  -->
+  <target name="ear" depends="build" description="Package a standard Java EE EAR for distribution">
+    <mkdir dir="${dist.dir}"/>
+    <wlpackage srcdir="${src.dir}" destdir="${dest.dir}"
+               toFile="${ear}" />
+  </target>
+
+  <!-- Package a standard exploded Java EE ear for distribution  -->
+  <target name="ear.exploded" depends="build" description="Package a standard exploded Java EE EAR">
+    <mkdir dir="${dist.dir}"/>
+    <wlpackage srcdir="${src.dir}" destdir="${dest.dir}"
+               toDir="${ear.exploded}" />
+  </target>
+
+  <!-- Configure WebLogic Server with resources required by application -->
+  <!-- For example you can configure JDBCConnection Pools and Data Sources, and JMS Destinations etc -->
+  <target name="config.server" description="Configure server with resources required by application">
+     <echo message="You will need to customize this based on your application.  Medrec/setup/build.xml has examples..."/>
+     <!--    
+      <wlconfig url="${adminurl}" username="${user}"
+                password="${password}">
+      </wlconfig>
+     -->
+  </target>
+
+
+</project>
+
