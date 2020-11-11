@@ -1,5 +1,8 @@
-This repository contains some popular Java frameworks and libraries examples.
-Each starter demo should have their own `readme` file for notes.
+# learn-java
 
-These demos and starters are created for learning purpose only.
+This repository contains some popular Java frameworks and libraries demo and examples.
+Each folder topic should have their own `readme` file for notes.
 
+These demos and examples are for learning purpose only.
+
+Project Owner: Zemian Deng
