@@ -1,0 +1,148 @@
+= Zemian Deng's Developer Toolbox
+
+This project contains tools and code generator to support Java development.
+
+== Build
+
+  mvn package
+
+
+== Quick Start
+
+----
+# Generate a webapp project
+java -jar target/toolbox-<version>-app.jar CodeGen springwebapp
+
+# If you have a database, you can generate domain model and DAO as well
+java target/toolbox-<version>-app.jar CodeGen springwebapp --tables=users,settings
+
+# To test the project
+cd target/springwebapp
+mvn package
+java -jar target/dependency/webapp-runner.jar target/springwebapp.war
+----
+
+
+== CodeGen Tool
+
+----
+java -jar target/toolbox-<version>-app.jar CodeGen --help
+A source code generator tool.
+
+This tool will walk through all the files in a template set directory (inside a 
+classpath), and then delegate all the processing works to one or more plugins. Each 
+plugin can provide their own logic to generate anything they wish based on the input
+template. Most of the built-in plugins can be triggered by one of the option provided.
+
+Usage: CodeGen [options] [templateSetName]
+
+A 'templateSetName' is just a folder name under the <templatesDir>. 
+Currently we provide the following built-in set:
+
+  javaapp - A maven based Java application.
+  mavenapp - A multi modules maven application.
+  springapp - A Spring command line application.
+  jspwebapp - A JSP based web application.
+  springbootapp - A Spring Boot application.
+  servletwebapp - A Servlet based web application.
+  springwebapp - A Spring web application.
+  springwebappapi - A Spring web application for RESTful API.
+
+  --optionsFile=FILE
+      A JSON file to supply all the command options in a map.
+  --templateSetName=NAME
+      A sub directory name inside <templateDir> to generate code. 
+      Default to arguments[0]>.
+  --projectName=NAME
+      Project name to generate. Default to <templateSetName>.
+  --outputDir=DIR
+      Output directory. Default 'target/<projectName>'.
+  --overrideFiles=true|false
+      Override existing files in outputDir.
+      Default to false.
+  --templatesDir=PATH
+      A path in CLASSPATH to find FTL templates.
+      Default 'toolbox/templates' that's from the dist jar.
+  --plugins=CLASSNAME1,CLASSNAME2...
+      A csv list of classname of plugins to use. We provide a default set, and you can
+      add more custom one. See [BUILT-IN PLUGINS] section for more details.
+
+BUILT-IN PLUGINS:
+
+Plugin: com.zemian.toolbox.codegen.plugins.StaticFilePlugin
+Copy all static files from template set folder to output directory.
+
+NOTE: This plugin always enabled.
+  --staticDirectory=DIR
+      The name of the directory to copy static files.
+      Default '<templateSetName>/static'
+
+Plugin: com.zemian.toolbox.codegen.plugins.JavaProjectPlugin
+Generate a Java project structure using the following options as data model for
+template. We will use <projectName> as maven artifactId.
+  --groupId=NAME
+      Project group name to generate (groupId). Default to <templateSetName>.
+  --basePackage=NAME
+      Java base package name to use for classes generation.
+      Default <groupId> + '.' + <projectName> (we auto convert to proper Java package name).
+
+Plugin: com.zemian.toolbox.codegen.plugins.DbTableToJavaPlugin
+Generate Java classes by inspecting DB tables.
+  --dbTables=TABLE_NAME1,TABLE_NAME2...
+      Generate DB table to Java code. Table name can use '%' as wildcard pattern.
+      Required option and will enable this plugin.
+  --tableToDomainNames=TABLE_NAME1=DOMAIN_NAME1,TABLE_NAME2=DOMAIN_NAME1...
+      Explicitly map table name to domain class name.
+      Default to empty, which to derive from table name.
+  --colEnumList=TABLE_NAME.COLUMN,Value1,Value2...
+      Generate Java enum values for mapped table column in a domain field.
+      This option can be use multiple times.
+  --colKey=TABLE_NAME.COLUMN
+      If key column is not auto incremented/genearted, then use this option to explicitly
+      name DB column as key for the domain model.
+      This option can be use multiple times.
+  --useSingularDomain=true|false
+      When converting from DB table name to Java domain classes, drop plural ending and
+      use singular form of English word for domain name instead.
+      Default true.
+  --controllerType=API|UI
+      Generate API controllers or Web UI controllers, or both.
+      Default based on <templateSetName> contains 'api' or not.
+  --apiUrlMapping=URL
+      If controllerType is API, this url is used to prefix to all controller
+      url mapping for all actions.
+      Default '/api'.
+  --webUiUrlMapping=URL
+      If controllerType is UI, this url is used to prefix to all controller
+      url mapping for all actions.
+      Default '/admin'.
+  --dbTableTemplateDir=PATH
+      Path to this plugin templates, relative to <templateDir>.
+      Default to 'plugins/dbtable'
+  --dbUrl=URL         Default 'jdbc:postgresql://localhost/test'.
+  --dbDriver=NAME     Default 'org.postgresql.Driver'.
+  --dbUser=USER       Default 'test'.
+  --dbPass=PASSWORD   Default empty.
+
+Plugin: com.zemian.toolbox.codegen.plugins.FtlTemplatePlugin
+Copy FreeMarker template files from a template set folder to output directory.
+This provide a quick way to duplicate a set of directories and files into output 
+directory, and yet still provide a miminal basic models to all templates.
+
+NOTE: This plugin always enabled.
+  --ftlDirectory=DIR
+      The name of the directory to copy template files.
+      Default '<templateSetName>/ftl'
+----
+
+== Other Toolbox Commands
+
+----
+
+# Print a text entry (eg: META-INF/MANIFEST.MF) from a jar file.
+java -jar target/toolbox-<version>-app.jar PrintJar /path/to/my.jar META-INF/MANIFEST.MF
+
+# Find a className or resourceName in a directory full of jar files.
+java -jar target/toolbox-<version>-app.jar FindJar IOUtils target/dependency
+
+----

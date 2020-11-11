@@ -1,0 +1,13 @@
+{
+  "templatePathToOutputFiles": {
+    "src/main/java/AppException.java" : "src/main/java/${basePackagePath}/AppException.java",
+    "src/main/java/AppUtils.java" : "src/main/java/${basePackagePath}/AppUtils.java",
+    "src/main/java/web/AppManager.java" : "src/main/java/${basePackagePath}/web/AppManager.java",
+    "src/main/java/web/AppStartup.java" : "src/main/java/${basePackagePath}/web/AppStartup.java",
+    "src/main/java/web/ViewResolver.java" : "src/main/java/${basePackagePath}/web/ViewResolver.java",
+    "src/main/java/web/ViewController.java" : "src/main/java/${basePackagePath}/web/ViewController.java",
+    "src/main/java/web/SystemInfoController.java" : "src/main/java/${basePackagePath}/web/SystemInfoController.java",
+    "src/main/java/web/IndexController.java" : "src/main/java/${basePackagePath}/web/IndexController.java",
+    "src/main/java/web/HelloController.java" : "src/main/java/${basePackagePath}/web/HelloController.java"
+  }
+}

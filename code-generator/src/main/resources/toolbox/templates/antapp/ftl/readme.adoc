@@ -1,0 +1,7 @@
+= Project `${projectName}`
+
+A simple java project using Ant Build Tool.
+
+== Build
+
+  ant download-lib test dist
