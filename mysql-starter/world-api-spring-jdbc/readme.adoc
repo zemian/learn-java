@@ -1,0 +1,4 @@
+A web/api application for the "world" database.
+
+	./gradlew bootRun
+	open http://localhost:8080

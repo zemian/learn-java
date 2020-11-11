@@ -1,0 +1,87 @@
+REST web services have become the number one means for application integration on the web.
+In its core, REST defines that a system that consists of resources with which clients interact.
+These resources are implemented in a hypermedia-driven way. Spring MVC and Spring WebFlux each
+offer a solid foundation to build theses kinds of services. However, implementing even the simplest
+tenet of REST web services for a multi-domain object system can be quite tedious and result in a
+lot of boilerplate code.
+
+Spring Data REST builds on top of the Spring Data repositories and automatically exports those as
+REST resources. It leverages hypermedia to let clients automatically find functionality exposed by
+the repositories and integrate these resources into related hypermedia-based functionality.
+
+https://docs.spring.io/spring-data/rest/docs/3.1.5.RELEASE/reference/html/
+
+SpringData - JPA
+https://docs.spring.io/spring-data/jpa/docs/2.1.5.RELEASE/reference/html/
+
+This project uses Hibernate as JPA implementation.
+
+== Implementation Notes
+
+=== Handle Composite Keys (CountryLanguage table) is Hard!
+
+* API URL is not nicely formed! You have to manually mapped so to avoid "findByCid" in name.
+* The Composite Key field is not marshall by Jackson in REST result message?
+* Query by ID is complicated!
+
+=== Handle DB NULL Data
+
+Due to Country table has `null` values on some incomplete data such as "indepYear"
+for primitive type. We must use Java wrapper to handle DB `NULL` value. Without this
+the Spring/Jackson message converter will give NPE error.
+
+=== Writing Spring Data JPA Query Creation with Java Methods
+
+|===
+| Keyword |Sample |JPQL snippet
+| Is,Equals|findByFirstname, findByFirstnameIs, findByFirstnameEquals| … where x.firstname = ?1
+| And     |findByLastnameAndFirstname | … where x.lastname = ?1 and x.firstname = ?2
+| Or      |findByLastnameOrFirstname | … where x.lastname = ?1 or x.firstname = ?2
+| Like    |findByFirstnameLike  | … where x.firstname like ?1
+|===
+
+See https://docs.spring.io/spring-data/jpa/docs/2.1.5.RELEASE/reference/html/#jpa.query-methods.query-creation
+
+== Using Custom JPA Query
+
+----
+public interface UserRepository extends JpaRepository<User, Long> {
+  @Query("select u from User u where u.emailAddress = ?1")
+  User findByEmailAddress(String emailAddress);
+}
+
+// To use native query:
+@Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = ?1", nativeQuery = true)
+----
+
+NOTE: When using native query with joined, hibernate is not able to do count query
+with "count(table1.*)"? The workaround is to not use Pageable for now.
+
+See https://docs.spring.io/spring-data/jpa/docs/2.1.5.RELEASE/reference/html/#jpa.query-methods.at-query
+
+== API Examples
+
+Home page should list all endpoints
+  http://localhost:8080/
+
+Find All Countries
+  http://localhost:8080/countries
+
+Find Country by Key
+  http://localhost:8080/countries/USA
+
+See all search endpoints for Countries
+  http://localhost:8080/countries/search
+
+Find Countries by Name must use '%' and encode with '%25' in URL
+  http://localhost:8080/countries/search/findByNameLike?name=%25States%25
+
+Find Countries by Continent. Note that space is optional to use %20 in URL
+  http://localhost:8080/countries/search/findByContinent?continent=North America
+  http://localhost:8080/countries/search/findByContinent?continent=North%20America
+
+Find CountryLanguage
+  http://localhost:8080/country-languages/search/getByCid?countryCode=USA&language=English
+  http://localhost:8080/country-languages/search/findByLanguage?language=English
+  http://localhost:8080/country-languages/search/findByLanguageLike?language=%25English%25
+  http://localhost:8080/country-languages/search/findByCountryCode?countryCode=USA

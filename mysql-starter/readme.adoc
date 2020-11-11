@@ -1,0 +1,196 @@
+MySQL Community Edition is the freely downloadable version of the world's most popular open source database. It is available under the GPL license and is supported by a huge and active community of open source developers.
+
+https://www.mysql.com/products/community/
+
+== Download and Setup
+
+https://dev.mysql.com/doc/refman/8.0/en/
+
+
+=== First Time MySQL Server Setup
+
+The following example instructions is for MySQL 8 (With Zip Package) on a Windows + Cygwin Shell.
+
+----
+cd apps
+unzip mysql-8.0.15-winx64.zip
+cd mysql-8.0.15-winx64
+
+# Initialize data dir
+bin/mysqld --initialize --console
+# Note the random password generated for "root" user
+
+# Start Server
+bin/mysqld --console
+
+# Connect using another terminal as client using the random generated password
+bin/mysql -u root -p
+
+# To change root user password
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root123';
+FLUSH PRIVILEGES;
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+----
+
+=== First Time Database Setup
+
+Create new database:
+
+  # To create new db user and database
+  # By using GRANT, no need to flush privileges
+  CREATE DATABASE zemiandb;
+  CREATE USER 'zemiandb'@'localhost' IDENTIFIED BY 'zemiandb123';
+  GRANT ALL PRIVILEGES ON zemiandb.* TO 'zemiandb'@'localhost' WITH GRANT OPTION;
+
+  # If you want 'zemiandb' user to have access to all databases:
+  GRANT ALL PRIVILEGES ON *.* TO 'zemiandb'@'localhost' WITH GRANT OPTION;
+
+Reconnect as client again:
+
+	bin/mysql -u zemiandb -p zemiandb
+
+== ZemianDB - Learn MySQL
+
+See `zemiandb/int.sql`
+
+== Setup Sample Databases
+
+=== The Employee Sample DB
+
+  cd samples/employees
+  mysql -u root -p < employees.sql
+
+NOTE: The sql script should auto create a separate database! It should takes about 35 secs to load.
+
+The dump files are about 165M in size, and if we redump into single
+sql file (without comments), it comes up to 300MB in size!
+
+The lagest table is `salaries` which has about 2.8M records.
+
+  +--------------+------------------+----------------------------------+
+  | table_name   | expected_records | expected_crc                     |
+  +--------------+------------------+----------------------------------+
+  | employees    |           300024 | 4ec56ab5ba37218d187cf6ab09ce1aa1 |
+  | departments  |                9 | d1af5e170d2d1591d776d5638d71fc5f |
+  | dept_manager |               24 | 8720e2f0853ac9096b689c14664f847e |
+  | dept_emp     |           331603 | c2c4fc7f0506e50959a6c67ad55cac31 |
+  | titles       |           443308 | bfa016c472df68e70a03facafa1bc0a8 |
+  | salaries     |          2844047 | fd220654e95aea1b169624ffe3fca934 |
+  +--------------+------------------+----------------------------------+
+
+Some interesting queries:
+
+  select count(salary) from salaries;
+  select avg(salary) from salaries;
+  select count(*) from salaries where salary > 63810.7448;
+  -- output: 1255038
+
+See https://github.com/datacharmer/test_db
+
+=== Quartz
+  mysql -u zemiandb -p zemiandb
+  > create database quartz;
+  > use quartz
+  > source samples/quartz-2.3.0.sql
+
+
+== How to export databases
+
+  # Full DB export (schema + data)
+  mysqldump -u root -p world > samples/world-mysql-8.0.15.sql
+   
+  # Use `--no-data` option if you want the schema only
+
+== How to restore databases
+
+  mysql -u root -p world < samples/world-mysql-8.0.15.sql
+  
+== How to compare two databases
+
+  mkdir tmp
+  mysqldump --skip-comments --skip-extended-insert -u root -p world > tmp/file1.sql
+  mysqldump --skip-comments --skip-extended-insert -u root -p world2 > tmp/file2.sql
+  diff tmp/file1.sql tmp/file2.sql
+
+https://stackoverflow.com/questions/225772/compare-two-mysql-databases
+
+== JDBC connection config for SpringBoot `application.properties`
+
+----
+# For MySQL 8
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/zemiandb
+spring.datasource.username=zemiandb
+spring.datasource.password=zemiandb123
+
+# For MySQL 5 driver, use
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+----
+
+== Mac OS X (Homebrew) Setup of MySQL server
+
+  brew install mysql
+
+----
+We've installed your MySQL database without a root password. To secure it run:
+    mysql_secure_installation
+
+MySQL is configured to only allow connections from localhost by default
+
+To connect run:
+    mysql -uroot
+
+To have launchd start mysql now and restart at login:
+  brew services start mysql
+Or, if you don't want/need a background service you can just run:
+  mysql.server start
+==> Summary
+🍺  /usr/local/Cellar/mysql/8.0.15: 267 files, 234.9MB
+----
+
+=== Where is the "my.cnf" configuration file?
+
+There is no my.cnf by default. As such, MySQL starts with all of the default settings. If you want to create your own my.cnf to override any defaults, place it at /etc/my.cnf.
+
+Also, you can run `mysql --help` and look through it for the conf locations listed.
+
+  Default options are read from the following files in the given order:
+  /etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf 
+
+https://stackoverflow.com/questions/7973927/for-homebrew-mysql-installs-wheres-my-cnf
+
+=== How to reload "my.cnf" changes
+
+  mysql.server reload
+
+== SQL Tools
+
+- https://www.eversql.com[Optimizing SQL]
+
+== How to escape full database name (name with space)
+
+Use backtick `my table` to quote entire name
+
+
+== Interesting Data Collections
+
+- http://countries.petethompson.net/
+- https://catalog.data.gov/
+
+== Validation Query
+
+  mysql - select 1
+
+https://stackoverflow.com/questions/10684244/dbcp-validationquery-for-different-databases[For other databases validation queries]:
+
+----
+hsqldb - select 1 from INFORMATION_SCHEMA.SYSTEM_USERS
+Oracle - select 1 from dual
+DB2 - select 1 from sysibm.sysdummy1
+microsoft SQL Server - select 1 (tested on SQL-Server 9.0, 10.5 [2008])
+postgresql - select 1
+ingres - select 1
+derby - values 1
+H2 - select 1
+Firebird - select 1 from rdb$database
+----

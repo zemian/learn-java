@@ -1,0 +1,29 @@
+The goal of this project is to generate JPA entities from "sakila" database, and
+then expose selective entities as API endpoints.
+
+This project uses Hibernate as JPA implementation.
+
+== Using IntelliJ Database Plugin
+
+1. Connect to DB
+2. Select all tables
+3. Right Click menu: Scripted Extension > Generate POJOs.groovy
+4. Select a folder for destination
+5. This should generate Java pojo files.
+
+However the default POJO is not a JPA Entities. For that we need to customize the script.
+Use `scripts/GenerateEntityPOJO.groovy` instead. With this we are able to generate the
+`zemian.sakilaapispringdatarest.entities` package.
+
+NOTE: For quick fix, we simply made composite key Entity to be same as the class itself.
+A better solution is to generate a separate class for it so it can be typed when exposing
+Repository interface.
+
+See
+https://blog.jetbrains.com/datagrip/2018/02/13/generate-pojos/
+https://gist.github.com/virtualadrian/519fe0dc6658fe60500067bee3134c97
+
+== Example Usage
+
+  ./gradlew bootRun
+  open http://localhost:8080/film
