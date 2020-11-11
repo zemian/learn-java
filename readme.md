@@ -3,4 +3,3 @@ Each starter demo should have their own `readme` file for notes.
 
 These demos and starters are created for learning purpose only.
 
-There is a separate https://github.com/zemian/mysql-starter[`mysql-starter`] that explores JDBC API.
