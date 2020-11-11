@@ -47,6 +47,8 @@ public class PrimitiveTypes {
         // # Builtin String Object type
         String str = "foo";
         System.out.println(str);
+        System.out.println(str + " bar");
+        System.out.println(str + 3.14);
         System.out.println(str.length());
         System.out.println(str.substring(0, 2));
         System.out.println(str.indexOf("o"));
