@@ -1,4 +1,6 @@
-// Lesson 2 - Different types of data types in Java
+// Lesson 2
+// Different types of data types in Java
+//
 // Further study:
 // - Explore the data range for each type
 // - Explore more operators you can use for each data type

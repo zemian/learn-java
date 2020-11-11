@@ -14,7 +14,7 @@
 // - Learn about java.lang.Object and it's methods
 // - Learn about member default value
 // - Learn what getter and setter methods are
-public class Lesson06_ClassesTypeDefinition {
+public class Lesson07_ClassesTypeDefinition {
     public static void main(String[] args) {
         // Explore an built-in Class: Integer (or java.lang.Integer)
 

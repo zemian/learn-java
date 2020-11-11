@@ -4,10 +4,9 @@
 //
 // Further study:
 // - https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
-// - Learn about package work
-// - Learn how the modifier on class prefix affect its usage
+// - Review how package work again and see how access modifier affects it
 // - Learn about "default" access modifier
-public class Lesson08_ClassesAccessModifier {
+public class Lesson09_ClassesAccessModifier {
     public static void main(String[] args) {
         Truck truck = new Truck("Red", 10_000);
         System.out.println(truck.getDescription());

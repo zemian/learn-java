@@ -1,5 +1,7 @@
-// Lesson 4 - Function is for grouping reusable statements into a unit that we can invoke
-//            together.
+// Lesson 4
+// Function is for grouping reusable statements into a unit that we can invoke
+// together.
+//
 // Further study:
 // - Learn about early "return" statement in function
 // - Learn about StackOverFlow error by bad recursive function

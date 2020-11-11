@@ -1,4 +1,5 @@
-// Lesson 5 - One usage of Class is to simply group functions together.
+// Lesson 5
+// One usage of Class is to simply group functions together.
 //
 // Further study:
 // - Notice the usage of "static" keyword on function

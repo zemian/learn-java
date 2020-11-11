@@ -1,4 +1,6 @@
-// Lesson 1 - Class Hello World Program in Java
+// Lesson 1
+// Class Hello World Program in Java
+//
 // Further study:
 // - Learn to compile and run Java program from command line using "java" and "javac"
 // - Note that class name matches to file
