@@ -7,7 +7,7 @@ See Java Base API https://docs.oracle.com/en/java/javase/11/docs/api/java.base/m
 ## Content
 
 * `basic` - Learn the basic of Java Programming Language
-* `common-tasks` - Learn how to do some common tasks in java
+* `commontasks` - Learn how to do some common tasks in java
 
 ## Resources
 
