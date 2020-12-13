@@ -21,9 +21,6 @@ Note that JDK11 is the LTS release. You should able to replace "11" up to "14" i
 * https://docs.oracle.com/en/java/javase/11/nashorn/
 * https://docs.oracle.com/en/java/javase/11/nashorn/nashorn-and-shell-scripting.html
 * https://docs.oracle.com/en/java/javase/11/docs/specs/man/jjs.html
-* https://developer.oracle.com/databases/nashorn-javascript-part1.html
-* https://developer.oracle.com/databases/nashorn-javascript-part2.html (How to enable ES6 features)
-* https://wiki.openjdk.java.net/display/Nashorn/Nashorn+extensions
 
 Starting JDK 15, Nashorn has been removed from JDK as separate project now.
 Note that the `jrunscript` command is still avaiable in JDK 15, but it's experimental.
@@ -47,3 +44,13 @@ With JDK8, the binary program `jjs` is used to launch the internal Nashorn shell
 
 With JDK 10, it introduces `jshell` command that you can evaluate Java (Not JS) code in
 a shell terminal. See https://docs.oracle.com/javase/10/jshell for more.
+
+## More about Nashorn
+
+* https://winterbe.com/posts/2014/04/05/java8-nashorn-tutorial/
+* https://docs.oracle.com/javase/8/docs/jdk/api/nashorn/jdk/nashorn/api/scripting/ScriptUtils.html
+* https://developer.oracle.com/databases/nashorn-javascript-part1.html
+* https://developer.oracle.com/databases/nashorn-javascript-part2.html (How to enable ES6 features)
+* https://developer.oracle.com/databases/nashorn-javascript-part3.html
+* https://wiki.openjdk.java.net/display/Nashorn/Nashorn+extensions
+* https://github.com/EclairJS/eclairjs-nashorn/wiki/Nashorn-Java-to-JavaScript-interoperability-issues
