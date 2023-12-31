@@ -56,7 +56,8 @@
 
     <target name="test" depends="compile-test" description="Run junit tests">
         <mkdir dir="${target}/test-reports"/>
-        <junit printsummary="yes" haltonfailure="yes" tempdir="${target}">
+        <mkdir dir="${target}/test-temp"/>
+        <junit printsummary="yes" haltonfailure="yes" tempdir="${target}/test-temp">
             <classpath refid="test.classpath">
             </classpath>
             <formatter type="plain"/>
