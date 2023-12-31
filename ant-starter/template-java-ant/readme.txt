@@ -1,8 +1,9 @@
-= Hello Java
+# Hello Java
 
 A simple java project to explore the JDK using Ant Build Tool.
 
-== Build
+## Build
 
   ant download-lib
-  ant test dist
+  ant clean test
+  ant dist
