@@ -4,7 +4,6 @@
     <property name="target" location="target"/>
     <property name="lib" location="lib"/>
     <property name="project.version" value="1.0"/>
-    <property name="java.version" value="1.8"/>
 
     <path id="main.classpath">
         <pathelement location="${target}/classes"/>
@@ -16,7 +15,7 @@
         <fileset dir="${lib}/test" includes="*.jar"/>
     </path>
     
-	<target name="download-lib">
+	<target name="download-lib" description="Download dependency jars from internet.">
         <mkdir dir="${lib}/compile"/>
 		<mkdir dir="${lib}/test"/>
 
@@ -43,7 +42,7 @@
             <fileset dir="${src}/main/resources" includes="**/*"/>
         </copy>
         <javac srcdir="${src}/main/java" destdir="${target}/classes" classpathref="main.classpath"
-            includeantruntime="false" source="${java.version}" target="${java.version}">
+            includeantruntime="false">
         </javac>
     </target>
     <target name="compile-test" depends="compile" description="Compile test source files">
@@ -51,7 +50,7 @@
             <fileset dir="${src}/test/resources" includes="**/*"/>
         </copy>
         <javac srcdir="${src}/test/java" destdir="${target}/test-classes" classpathref="test.classpath"
-            includeantruntime="false" source="${java.version}" target="${java.version}">
+            includeantruntime="false">
         </javac>
     </target>
 
