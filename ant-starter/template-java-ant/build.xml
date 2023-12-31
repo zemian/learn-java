@@ -123,6 +123,6 @@
         <jar jarfile="${target}/${ant.project.name}-${project.version}.jar" basedir="${target}/classes"/>
     </target>
 
-    <target name="all" depends="download-lib, test-coverage, dist" description="Build test and package">
+    <target name="all" depends="clean, download-lib, test-coverage, dist" description="Build test and package">
     </target>
 </project>
