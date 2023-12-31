@@ -1,4 +1,4 @@
-<project name="hello-java" default="dist" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
+<project name="hello-java" default="all" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
 
     <property name="src" location="${basedir}/src"/>
     <property name="target" location="${basedir}/target"/>
@@ -121,5 +121,8 @@
 
     <target name="dist" depends="compile" description="Generate distribution package">
         <jar jarfile="${target}/${ant.project.name}-${project.version}.jar" basedir="${target}/classes"/>
+    </target>
+
+    <target name="all" depends="download-lib, test-coverage, dist" description="Build test and package">
     </target>
 </project>
