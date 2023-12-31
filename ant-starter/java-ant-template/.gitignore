@@ -1,4 +1,5 @@
-lib/
 target/
+lib/
+build/
+dist/
 .idea/
-.DS_Store
