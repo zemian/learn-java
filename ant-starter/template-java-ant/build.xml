@@ -1,8 +1,8 @@
-<project name="hello-java" default="dist" basedir=".">
+<project name="hello-java" default="dist" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
 
-    <property name="src" location="src"/>
-    <property name="target" location="target"/>
-    <property name="lib" location="lib"/>
+    <property name="src" location="${basedir}/src"/>
+    <property name="target" location="${basedir}/target"/>
+    <property name="lib" location="${basedir}/lib"/>
     <property name="project.version" value="1.0"/>
 
     <path id="main.classpath">
@@ -13,8 +13,9 @@
         <pathelement location="${target}/test-classes"/>
         <path refid="main.classpath"/>
         <fileset dir="${lib}/test" includes="*.jar"/>
+<!--        <fileset dir="${lib}/test/jacoco/lib" includes="*.jar"/>-->
     </path>
-    
+
 	<target name="download-lib" description="Download dependency jars from internet.">
         <mkdir dir="${lib}/compile"/>
 		<mkdir dir="${lib}/test"/>
@@ -26,6 +27,17 @@
         <get src="https://repo1.maven.org/maven2/junit/junit/4.12/junit-4.12.jar" dest="${lib}/test"/>
         <get src="https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar" dest="${lib}/test"/>
         <get src="https://repo1.maven.org/maven2/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar" dest="${lib}/test"/>
+
+<!--        <get src="https://repo1.maven.org/maven2/org/jacoco/jacoco/0.8.11/jacoco-0.8.11.zip" dest="${lib}/test"/>-->
+<!--        <unzip src="${lib}/test/jacoco-0.8.11.zip" dest="${lib}/test/jacoco"/>-->
+
+        <get src="https://repo1.maven.org/maven2/org/jacoco/org.jacoco.ant/0.8.11/org.jacoco.ant-0.8.11.jar" dest="${lib}/test"/>
+        <get src="https://repo1.maven.org/maven2/org/jacoco/org.jacoco.core/0.8.11/org.jacoco.core-0.8.11.jar" dest="${lib}/test"/>
+        <get src="https://repo1.maven.org/maven2/org/jacoco/org.jacoco.report/0.8.11/org.jacoco.report-0.8.11.jar" dest="${lib}/test"/>
+        <get src="https://repo1.maven.org/maven2/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11.jar" dest="${lib}/test"/>
+        <get src="https://repo1.maven.org/maven2/org/ow2/asm/asm/9.6/asm-9.6.jar" dest="${lib}/test"/>
+        <get src="https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/9.6/asm-tree-9.6.jar" dest="${lib}/test"/>
+        <get src="https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/9.6/asm-commons-9.6.jar" dest="${lib}/test"/>
     </target>
 
     <target name="init">
@@ -67,6 +79,44 @@
                 </fileset>
             </batchtest>
         </junit>
+    </target>
+
+    <target name="test-coverage" depends="compile-test" description="Run tests and generate test-coverage reports">
+        <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+            <classpath refid="test.classpath" />
+        </taskdef>
+
+        <mkdir dir="${target}/test-coverage"/>
+        <mkdir dir="${target}/test-reports"/>
+        <mkdir dir="${target}/test-temp"/>
+
+        <jacoco:coverage destfile="${target}/test-coverage/jacoco.exec">
+            <junit fork="yes" printsummary="no" haltonfailure="no" tempdir="${target}/test-temp">
+                <classpath refid="test.classpath">
+                </classpath>
+                <formatter type="plain"/>
+                <batchtest fork="yes" todir="${target}/test-reports">
+                    <fileset dir="${target}/test-classes">
+                        <include name="**/*Test.class"/>
+                    </fileset>
+                </batchtest>
+            </junit>
+        </jacoco:coverage>
+
+        <jacoco:report>
+            <executiondata>
+                <file file="${target}/test-coverage/jacoco.exec"/>
+            </executiondata>
+            <structure name="${ant.project.name}">
+                <classfiles>
+                    <fileset dir="${target}/classes"/>
+                </classfiles>
+                <sourcefiles encoding="UTF-8">
+                    <fileset dir="${src}/main/java"/>
+                </sourcefiles>
+            </structure>
+            <html destdir="${target}/test-coverage"/>
+        </jacoco:report>
     </target>
 
     <target name="dist" depends="compile" description="Generate distribution package">
