@@ -16,7 +16,7 @@
 <!--        <fileset dir="${lib}/test/jacoco/lib" includes="*.jar"/>-->
     </path>
 
-	<target name="download-lib" description="Download dependency jars from internet.">
+	<target name="download-lib" description="Download dependency jars">
         <mkdir dir="${lib}/compile"/>
 		<mkdir dir="${lib}/test"/>
 
