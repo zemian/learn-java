@@ -88,6 +88,7 @@
         <typedef name="condition.equals" classname="org.apache.tools.ant.taskdefs.condition.Equals" classpathref="main.classpath"/>
         <mytask>
             <condition.equals arg1="${debug}" arg2="true"/>
+            <condition.equals arg1="${debug}" arg2="false"/>
         </mytask>
     </target>
 </project>
