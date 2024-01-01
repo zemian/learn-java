@@ -1,9 +1,11 @@
-# Hello Java
+# A Java Project 
 
-A simple java project to explore the JDK using Ant Build Tool.
+A simple java project using Ant build tool.
 
-## Build
+This project contains build.xml that can download external dependencies
+and handle typical Java application development targets such as compile,
+test and dist package.
 
-  ant download-lib
-  ant clean test
-  ant dist
+## How to run
+
+Type "ant" command to run default "all" target.
