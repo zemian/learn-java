@@ -8,6 +8,7 @@
     <path id="main.classpath">
         <pathelement location="${target}/classes"/>
         <fileset dir="${lib}/compile" includes="*.jar"/>
+        <fileset file="${ant.core.lib}"/>
     </path>
     <path id="test.classpath">
         <pathelement location="${target}/test-classes"/>

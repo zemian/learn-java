@@ -4,6 +4,7 @@ A simple java project using Ant build tool.
 
 We will explore how to create Ant custom tasks.
 
+See https://ant.apache.org/manual/develop.html#writingowntask
 
 ## How to run
 
