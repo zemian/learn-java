@@ -8,7 +8,6 @@
     <path id="main.classpath">
         <pathelement location="${target}/classes"/>
         <fileset dir="${lib}/compile" includes="*.jar"/>
-        <fileset file="${ant.core.lib}"/>
     </path>
     <path id="test.classpath">
         <pathelement location="${target}/test-classes"/>
@@ -19,6 +18,8 @@
     <target name="download-lib" description="Download dependency jars">
         <mkdir dir="${lib}/compile"/>
         <mkdir dir="${lib}/test"/>
+        <get src="https://repo1.maven.org/maven2/org/apache/ant/ant/1.10.14/ant-1.10.14.jar" dest="${lib}/compile" usetimestamp="true"/>
+
         <get src="https://repo1.maven.org/maven2/junit/junit/4.12/junit-4.12.jar" dest="${lib}/test" usetimestamp="true"/>
         <get src="https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar" dest="${lib}/test" usetimestamp="true"/>
     </target>
@@ -40,7 +41,7 @@
             <fileset dir="${src}/main/resources" includes="**/*"/>
         </copy>
         <javac srcdir="${src}/main/java" destdir="${target}/classes" classpathref="main.classpath"
-            includeantruntime="false">
+            includeantruntime="false" release="17">
         </javac>
     </target>
     <target name="compile-test" depends="compile" description="Compile test source files">
@@ -48,7 +49,7 @@
             <fileset dir="${src}/test/resources" includes="**/*"/>
         </copy>
         <javac srcdir="${src}/test/java" destdir="${target}/test-classes" classpathref="test.classpath"
-            includeantruntime="false">
+            includeantruntime="false" release="17">
         </javac>
     </target>
 
@@ -72,5 +73,14 @@
     </target>
 
     <target name="all" depends="clean, download-lib, test, dist" description="Build test and package">
+    </target>
+
+    <!-- Test Custom Tasks -->
+    <target name="my-tasks" description="Test custom Ant tasks">
+        <taskdef name="hellotask" classname="zemian.javaapp.HelloTask" classpathref="main.classpath"/>
+        <typedef name="condition.equals" classname="org.apache.tools.ant.taskdefs.condition.Equals" classpathref="main.classpath"/>
+        <hellotask>
+            <condition.equals arg1="${debug}" arg2="true"/>
+        </hellotask>
     </target>
 </project>
