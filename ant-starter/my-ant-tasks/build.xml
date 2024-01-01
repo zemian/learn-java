@@ -76,11 +76,18 @@
     </target>
 
     <!-- Test Custom Tasks -->
-    <target name="my-tasks" description="Test custom Ant tasks">
+    <target name="hello-task" description="Test custom Ant tasks">
         <taskdef name="hellotask" classname="zemian.javaapp.HelloTask" classpathref="main.classpath"/>
         <typedef name="condition.equals" classname="org.apache.tools.ant.taskdefs.condition.Equals" classpathref="main.classpath"/>
         <hellotask>
-            <condition.equals arg1="${debug}" arg2="true"/>
         </hellotask>
+    </target>
+
+    <target name="my-task" description="Test custom Ant tasks">
+        <taskdef name="mytask" classname="zemian.javaapp.MyTask" classpathref="main.classpath"/>
+        <typedef name="condition.equals" classname="org.apache.tools.ant.taskdefs.condition.Equals" classpathref="main.classpath"/>
+        <mytask>
+            <condition.equals arg1="${debug}" arg2="true"/>
+        </mytask>
     </target>
 </project>
