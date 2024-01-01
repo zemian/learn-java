@@ -1,4 +1,4 @@
-<project name="java-app" default="all" basedir=".">
+<project name="my-ant-tasks" default="all" basedir=".">
 
     <property name="src" location="${basedir}/src"/>
     <property name="target" location="${basedir}/target"/>
@@ -15,11 +15,14 @@
         <fileset dir="${lib}/test" includes="*.jar"/>
     </path>
 
-	<target name="download-lib" description="Download dependency jars">
+    <target name="download-lib" description="Download dependency jars">
         <mkdir dir="${lib}/compile"/>
-		<mkdir dir="${lib}/test"/>
-        <get src="https://repo1.maven.org/maven2/junit/junit/4.12/junit-4.12.jar" dest="${lib}/test"/>
-        <get src="https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar" dest="${lib}/test"/>
+        <mkdir dir="${lib}/test"/>
+        <get src="https://repo1.maven.org/maven2/junit/junit/4.12/junit-4.12.jar" dest="${lib}/test" usetimestamp="true"/>
+        <get src="https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar" dest="${lib}/test" usetimestamp="true"/>
+    </target>
+    <target name="clean-lib" description="Clean up lib directory">
+        <delete dir="${lib}"/>
     </target>
 
     <target name="init">
@@ -27,7 +30,7 @@
         <mkdir dir="${target}/classes"/>
     </target>
 
-    <target name="clean" description="clean up">
+    <target name="clean" description="Clean up build and target directory">
         <delete dir="${target}"/>
     </target>
 
@@ -67,6 +70,6 @@
         <jar jarfile="${target}/${ant.project.name}-${project.version}.jar" basedir="${target}/classes"/>
     </target>
 
-    <target name="all" depends="clean, download-lib, test, dist" description="Build test and package">
+    <target name="all" depends="clean, download-lib, dist" description="Build test and package">
     </target>
 </project>

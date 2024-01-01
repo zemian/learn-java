@@ -1,4 +1,4 @@
-<project name="java-app" default="all" basedir=".">
+<project name="java-template" default="all" basedir=".">
 
     <property name="src" location="${basedir}/src"/>
     <property name="target" location="${basedir}/target"/>

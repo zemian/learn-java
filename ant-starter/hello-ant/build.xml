@@ -1,4 +1,4 @@
-<project name="hello" default="dist" basedir=".">
+<project name="hello-java" default="dist" basedir=".">
   <description>
     A simple java build file
     See http://ant.apache.org/manual/using.html#example
