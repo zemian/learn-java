@@ -1,0 +1,75 @@
+<project name="ivy-dependency-manager" default="all" basedir=".">
+
+    <property name="src" location="${basedir}/src"/>
+    <property name="target" location="${basedir}/target"/>
+    <property name="lib" location="${basedir}/lib"/>
+    <property name="project.version" value="1.0"/>
+
+    <path id="main.classpath">
+        <pathelement location="${target}/classes"/>
+        <fileset dir="${lib}/compile" includes="*.jar"/>
+    </path>
+    <path id="test.classpath">
+        <pathelement location="${target}/test-classes"/>
+        <path refid="main.classpath"/>
+        <fileset dir="${lib}/test" includes="*.jar"/>
+    </path>
+
+	<target name="download-lib" description="Download dependency jars">
+        <mkdir dir="${lib}/compile"/>
+		<mkdir dir="${lib}/test"/>
+        <get src="https://repo1.maven.org/maven2/junit/junit/4.12/junit-4.12.jar" dest="${lib}/test" usetimestamp="true"/>
+        <get src="https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar" dest="${lib}/test" usetimestamp="true"/>
+    </target>
+    <target name="clean-lib" description="Clean up lib directory">
+        <delete dir="${lib}"/>
+    </target>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${target}/classes"/>
+    </target>
+
+    <target name="clean" description="Clean up build and target directory">
+        <delete dir="${target}"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile main source files">
+        <copy todir="${target}/classes">
+            <fileset dir="${src}/main/resources" includes="**/*"/>
+        </copy>
+        <javac srcdir="${src}/main/java" destdir="${target}/classes" classpathref="main.classpath"
+            includeantruntime="false">
+        </javac>
+    </target>
+    <target name="compile-test" depends="compile" description="Compile test source files">
+        <copy todir="${target}/test-classes">
+            <fileset dir="${src}/test/resources" includes="**/*"/>
+        </copy>
+        <javac srcdir="${src}/test/java" destdir="${target}/test-classes" classpathref="test.classpath"
+            includeantruntime="false">
+        </javac>
+    </target>
+
+    <target name="test" depends="compile-test" description="Run junit tests">
+        <mkdir dir="${target}/test-reports"/>
+        <mkdir dir="${target}/test-temp"/>
+        <junit printsummary="yes" haltonfailure="yes" tempdir="${target}/test-temp">
+            <classpath refid="test.classpath">
+            </classpath>
+            <formatter type="plain"/>
+            <batchtest fork="yes" todir="${target}/test-reports">
+                <fileset dir="${target}/test-classes">
+                    <include name="**/*Test.class"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="dist" depends="compile" description="Generate distribution package">
+        <jar jarfile="${target}/${ant.project.name}-${project.version}.jar" basedir="${target}/classes"/>
+    </target>
+
+    <target name="all" depends="clean, download-lib, dist" description="Build test and package">
+    </target>
+</project>
